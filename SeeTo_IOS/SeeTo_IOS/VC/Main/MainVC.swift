@@ -10,20 +10,49 @@ import UIKit
 import XLPagerTabStrip
 
 class MainVC : ButtonBarPagerTabStripViewController{
+    @IBOutlet weak var MainFabtn: FabShape!
+    @IBOutlet weak var TodoFab: FabShape!
+    @IBOutlet weak var IdeasFab: FabShape!
+    @IBOutlet weak var MemoFab: FabShape!
+    
+    var flag = false
+    
+    @IBAction func TodoFab_Click(_ sender: Any) {
+    }
+    @IBAction func IdeasFab_Click(_ sender: Any) {
+    }
+    @IBAction func MemoFab_Click(_ sender: Any) {
+    }
+    
+    @IBAction func MainFAB(_ sender: Any) {
+       MainFaBtnClick()
+    }
+
+    @IBAction func MenuBtn(_ sender: Any) {
+        performSegue(withIdentifier: "toMenu", sender: nil)
+    }
     
     @IBOutlet weak var SearchBtn: UIBarButtonItem!
     
     @IBAction func SortBtn(_ sender: Any) {
+
+        let alert = UIAlertController(title: "Order By", message: "", preferredStyle: .actionSheet)
         
+        alert.addAction(UIAlertAction(title: "Ascending", style: .default, handler: nil))
+        
+        alert.addAction(UIAlertAction(title: "Descending", style: .default, handler: nil))
+        
+        alert.addAction(UIAlertAction(title: "Left time", style: .default, handler: nil))
+        
+        alert.addAction(UIAlertAction(title: "Type", style: .default, handler: nil))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func MenuBtn(_ sender: Any) {
-    }
+   
     
-    @IBOutlet weak var MainFabtn: FabShape!
-    
-    @IBAction func MainFAB(_ sender: Any) {
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = false
@@ -68,7 +97,55 @@ class MainVC : ButtonBarPagerTabStripViewController{
         
     }
 }
-
+    
+extension MainVC {
+    func MainFaBtnClick(){
+        if(flag == false){
+            flag = true
+            UIView.animate(withDuration: 0.3, animations: {
+                self.MainFabtn.transform = CGAffineTransform(rotationAngle: 0.8)
+                self.MainFabtn.backgroundColor = Color.MAINPURPLE.getColor()
+            })
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                self.MemoFab.transform = CGAffineTransform(scaleX: 3, y: 3)
+                self.MemoFab.backgroundColor = Color.MEMOPURPLE.getColor()
+            })
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                self.IdeasFab.transform = CGAffineTransform(scaleX: 5.5, y: 5.5)
+                self.IdeasFab.backgroundColor = Color.IDEASPURPLE.getColor()
+            })
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                self.TodoFab.transform = CGAffineTransform(scaleX: 8, y: 8)
+                self.TodoFab.backgroundColor = Color.TODOPURPLE.getColor()
+            })
+        } else {
+            flag = false
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                self.MainFabtn.transform = CGAffineTransform(rotationAngle: 1.6)
+                self.MainFabtn.backgroundColor = Color.LIGHTPURPLE.getColor()
+            })
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                self.MemoFab.transform = CGAffineTransform(scaleX: 3/3, y: 3/3)
+                self.MemoFab.backgroundColor = Color.MEMOPURPLE.getColor()
+            })
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                self.IdeasFab.transform = CGAffineTransform(scaleX: 5.5/5.5, y: 5.5/5.5)
+                self.IdeasFab.backgroundColor = Color.IDEASPURPLE.getColor()
+            })
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                self.TodoFab.transform = CGAffineTransform(scaleX: 8/8, y: 8/8)
+                self.TodoFab.backgroundColor = Color.TODOPURPLE.getColor()
+            })
+        }
+    }
+}
 
 
 
