@@ -32,11 +32,7 @@ class NavigationShape : UINavigationController {
     }
     
     func setShape(){
-//        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
-//        titleLabel.text = "SeeTo"
-//        titleLabel.textAlignment = .center
-//        titleLabel.textColor = Color.PURPLE.getColor()
-//        navigationItem.titleView = titleLabel
+        navigationBar.tintColor = Color.PURPLE.getColor()
     }
 }
 
