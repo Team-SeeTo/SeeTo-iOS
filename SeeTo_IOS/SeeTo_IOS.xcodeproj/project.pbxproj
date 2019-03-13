@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		22BFCE643E1936830DBF7EA4 /* Pods_SeeTo_IOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAB8CA233E03D8C3797416E /* Pods_SeeTo_IOSTests.framework */; };
 		4B107BA7BB45A5332465D6F7 /* Pods_SeeTo_IOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5048EFA5BBF91B500EA931EA /* Pods_SeeTo_IOSUITests.framework */; };
+		680BAF622238990100C09F9B /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 680BAF612238990100C09F9B /* schema.json */; };
+		680BAF652238999600C09F9B /* register.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 680BAF642238999600C09F9B /* register.graphql */; };
+		680BAF6822389A4700C09F9B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680BAF6722389A4600C09F9B /* API.swift */; };
+		680BAF6A22389A6F00C09F9B /* login.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 680BAF6922389A6F00C09F9B /* login.graphql */; };
 		681175D922325C9D00E98BDE /* TodoSelectCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681175D822325C9D00E98BDE /* TodoSelectCategoryVC.swift */; };
 		683255752227F672001D4743 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683255742227F672001D4743 /* AppDelegate.swift */; };
 		683255772227F672001D4743 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683255762227F672001D4743 /* MainVC.swift */; };
@@ -93,6 +97,10 @@
 		3DAB8CA233E03D8C3797416E /* Pods_SeeTo_IOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeeTo_IOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5048EFA5BBF91B500EA931EA /* Pods_SeeTo_IOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeeTo_IOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C22CF7F2EA9CB9440B3A488 /* Pods_SeeTo_IOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeeTo_IOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		680BAF612238990100C09F9B /* schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		680BAF642238999600C09F9B /* register.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = register.graphql; sourceTree = "<group>"; };
+		680BAF6722389A4600C09F9B /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = SeeTo_IOS/API.swift; sourceTree = SOURCE_ROOT; };
+		680BAF6922389A6F00C09F9B /* login.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = login.graphql; sourceTree = "<group>"; };
 		681175D822325C9D00E98BDE /* TodoSelectCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoSelectCategoryVC.swift; sourceTree = "<group>"; };
 		683255712227F672001D4743 /* SeeTo_IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeeTo_IOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		683255742227F672001D4743 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -214,6 +222,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		680BAF6622389A3A00C09F9B /* GraphQL */ = {
+			isa = PBXGroup;
+			children = (
+				680BAF642238999600C09F9B /* register.graphql */,
+				680BAF6722389A4600C09F9B /* API.swift */,
+				680BAF6922389A6F00C09F9B /* login.graphql */,
+			);
+			path = GraphQL;
+			sourceTree = "<group>";
+		};
 		683255682227F672001D4743 = {
 			isa = PBXGroup;
 			children = (
@@ -239,6 +257,7 @@
 		683255732227F672001D4743 /* SeeTo_IOS */ = {
 			isa = PBXGroup;
 			children = (
+				680BAF6622389A3A00C09F9B /* GraphQL */,
 				683255B12227FCDC001D4743 /* Font */,
 				683255A82227F68A001D4743 /* Util */,
 				683255A72227F683001D4743 /* UI */,
@@ -249,6 +268,7 @@
 				683255802227F673001D4743 /* LaunchScreen.storyboard */,
 				683255832227F673001D4743 /* Info.plist */,
 				6832557B2227F672001D4743 /* SeeTo_IOS.xcdatamodeld */,
+				680BAF612238990100C09F9B /* schema.json */,
 			);
 			path = SeeTo_IOS;
 			sourceTree = "<group>";
@@ -458,6 +478,7 @@
 				6832556E2227F672001D4743 /* Frameworks */,
 				6832556F2227F672001D4743 /* Resources */,
 				38683CB164239A9C99B8AAD1 /* [CP] Embed Pods Frameworks */,
+				680BAF632238994900C09F9B /* Generate Apollo GraphQL API */,
 			);
 			buildRules = (
 			);
@@ -572,6 +593,8 @@
 				683BBC05222E5726001F4F83 /* QuickMemo.storyboard in Resources */,
 				68F43CEE222D5E29003258A3 /* hoodson_free_font.ttf in Resources */,
 				6847F37422309274009239F4 /* leaderboard.png in Resources */,
+				680BAF6A22389A6F00C09F9B /* login.graphql in Resources */,
+				680BAF652238999600C09F9B /* register.graphql in Resources */,
 				6832557F2227F673001D4743 /* Assets.xcassets in Resources */,
 				683BBBFF222E56EE001F4F83 /* Todos.storyboard in Resources */,
 				6847F37A22311FBB009239F4 /* MainMenu.storyboard in Resources */,
@@ -580,6 +603,7 @@
 				68392FF3223010AB00D14594 /* ic_more_vert.png in Resources */,
 				684246A6222F8EB500D59363 /* ic_menu.png in Resources */,
 				684246B6222FD7CB00D59363 /* ic_share.png in Resources */,
+				680BAF622238990100C09F9B /* schema.json in Resources */,
 				6832557A2227F672001D4743 /* Main.storyboard in Resources */,
 				684246AB222F8EBE00D59363 /* baseline-sort-24px@2x.png in Resources */,
 				683255B02227F77E001D4743 /* signin.png in Resources */,
@@ -613,12 +637,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SeeTo_IOS/Pods-SeeTo_IOS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Apollo/Apollo.framework",
 				"${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Apollo.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLPagerTabStrip.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -647,6 +673,24 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		680BAF632238994900C09F9B /* Generate Apollo GraphQL API */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Apollo GraphQL API";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "APOLLO_FRAMEWORK_PATH=\"$(eval find $FRAMEWORK_SEARCH_PATHS -name \"Apollo.framework\" -maxdepth 1)\"\n\nif [ -z \"$APOLLO_FRAMEWORK_PATH\" ]; then\necho \"error: Couldn't find Apollo.framework in FRAMEWORK_SEARCH_PATHS; make sure to add the framework to your project.\"\nexit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n$APOLLO_FRAMEWORK_PATH/check-and-run-apollo-cli.sh codegen:generate --queries=\"$(find . -name '*.graphql')\" --schema=schema.json API.swift\n";
 		};
 		71428388746BF0517A39C0E4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -706,6 +750,7 @@
 				68F43CF0222D5E83003258A3 /* SignUpVC.swift in Sources */,
 				683BBC0C222E5804001F4F83 /* IdeasVC.swift in Sources */,
 				683E4B2E22354871009F92E5 /* IdeasDetailVC.swift in Sources */,
+				680BAF6822389A4700C09F9B /* API.swift in Sources */,
 				683E4B2522353C4F009F92E5 /* TodoSelectDateVC.swift in Sources */,
 				68F43CE9222D1719003258A3 /* Shape.swift in Sources */,
 				681175D922325C9D00E98BDE /* TodoSelectCategoryVC.swift in Sources */,

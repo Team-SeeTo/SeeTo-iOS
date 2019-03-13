@@ -1,16 +1,22 @@
 PODS:
+  - Apollo (0.9.4):
+    - Apollo/Core (= 0.9.4)
+  - Apollo/Core (0.9.4)
   - XLPagerTabStrip (8.1.0)
 
 DEPENDENCIES:
+  - Apollo (~> 0.9.4)
   - XLPagerTabStrip (~> 8.1)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Apollo
     - XLPagerTabStrip
 
 SPEC CHECKSUMS:
+  Apollo: 450856adbdebcdf28c3c671f81732ac3f9944065
   XLPagerTabStrip: 22d4c58200d7c105e0e407ab6bfd01a5d85014be
 
-PODFILE CHECKSUM: 3ddfbb1f1ff9934cf76a3045b695b08a160ada60
+PODFILE CHECKSUM: f718e4aec858db71f9c5d0895d3db21e1fb99786
 
 COCOAPODS: 1.5.3
