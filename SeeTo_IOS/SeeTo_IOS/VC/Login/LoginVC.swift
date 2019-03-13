@@ -15,7 +15,22 @@ class LoginVC: UIViewController {
     
     @IBAction func LoginBtn(_ sender: Any) {
         if(IdInput.text != "" && PassWordInput.text != ""){
-            self.performSegue(withIdentifier: "toMain", sender: nil)
+            apollo.perform(mutation:
+                AuthMutation(password: PassWordInput.text, email: IdInput.text))
+            {result,error in
+                if (result?.data?.auth?.result?.asAuthField?.accessToken) != nil {
+//                    self.performSegue(withIdentifier: "toMain", sender: nil)
+                    
+                    UserDefaults.standard.set(result?.data?.auth?.result?.asAuthField?.accessToken, forKey: "accessToken")
+                    
+                    UserDefaults.standard.set(result?.data?.auth?.result?.asAuthField?.refreshToken, forKey: "refreshToken")
+                    
+                }
+                
+                if error != nil {
+                    print("error!")
+                }
+            }
         }
     }
     
@@ -25,7 +40,7 @@ class LoginVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = true
-//        UIApplication.shared.statusBarView?.backgroundColor = Color.PURPLE.getColor()
+        //        UIApplication.shared.statusBarView?.backgroundColor = Color.PURPLE.getColor()
     }
 }
 
