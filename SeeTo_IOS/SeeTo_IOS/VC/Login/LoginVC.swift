@@ -8,13 +8,14 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class LoginVC: UIViewController {
     @IBOutlet weak var IdInput: UITextField!
     @IBOutlet weak var PassWordInput: UITextField!
     
     @IBAction func LoginBtn(_ sender: Any) {
-        if(IdInput.text != "" && PassWordInput.text != ""){
+        if(!IdInput.text!.isEmpty && !PassWordInput.text!.isEmpty){
             apollo.perform(mutation:
                 AuthMutation(password: PassWordInput.text, email: IdInput.text))
             {result,error in
@@ -40,15 +41,5 @@ class LoginVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = true
-        //        UIApplication.shared.statusBarView?.backgroundColor = Color.PURPLE.getColor()
     }
 }
-
-
-
-//extension UIApplication {
-//    var statusBarView : UIView? {
-//        return value(forKey: "statusBar") as? UIView
-//    }
-//}
-

@@ -11,3 +11,4 @@ mutation Auth($password : String , $email : String){
         }
     }
 }
+

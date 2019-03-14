@@ -37,6 +37,9 @@
 		683BBC0C222E5804001F4F83 /* IdeasVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683BBC0B222E5804001F4F83 /* IdeasVC.swift */; };
 		683BBC0E222E580F001F4F83 /* QuickMemoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683BBC0D222E580F001F4F83 /* QuickMemoVC.swift */; };
 		683C909722367B140069BC50 /* QuickMemoDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C909622367B140069BC50 /* QuickMemoDetailVC.swift */; };
+		683CFA4A223A181300BEC049 /* simple_profile.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 683CFA49223A181300BEC049 /* simple_profile.graphql */; };
+		683CFA4C223A1FC500BEC049 /* refresh.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 683CFA4B223A1FC500BEC049 /* refresh.graphql */; };
+		683CFA4E223A254400BEC049 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683CFA4D223A254400BEC049 /* CoreData.swift */; };
 		683E4B2322353866009F92E5 /* TodoSelectModeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683E4B2222353866009F92E5 /* TodoSelectModeVC.swift */; };
 		683E4B2522353C4F009F92E5 /* TodoSelectDateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683E4B2422353C4F009F92E5 /* TodoSelectDateVC.swift */; };
 		683E4B2722354356009F92E5 /* IdeasSelectCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683E4B2622354356009F92E5 /* IdeasSelectCategoryVC.swift */; };
@@ -132,6 +135,9 @@
 		683BBC0B222E5804001F4F83 /* IdeasVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasVC.swift; sourceTree = "<group>"; };
 		683BBC0D222E580F001F4F83 /* QuickMemoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickMemoVC.swift; sourceTree = "<group>"; };
 		683C909622367B140069BC50 /* QuickMemoDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickMemoDetailVC.swift; sourceTree = "<group>"; };
+		683CFA49223A181300BEC049 /* simple_profile.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = simple_profile.graphql; sourceTree = "<group>"; };
+		683CFA4B223A1FC500BEC049 /* refresh.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = refresh.graphql; sourceTree = "<group>"; };
+		683CFA4D223A254400BEC049 /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		683E4B2222353866009F92E5 /* TodoSelectModeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoSelectModeVC.swift; sourceTree = "<group>"; };
 		683E4B2422353C4F009F92E5 /* TodoSelectDateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoSelectDateVC.swift; sourceTree = "<group>"; };
 		683E4B2622354356009F92E5 /* IdeasSelectCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasSelectCategoryVC.swift; sourceTree = "<group>"; };
@@ -228,6 +234,8 @@
 				680BAF642238999600C09F9B /* register.graphql */,
 				680BAF6722389A4600C09F9B /* API.swift */,
 				680BAF6922389A6F00C09F9B /* login.graphql */,
+				683CFA49223A181300BEC049 /* simple_profile.graphql */,
+				683CFA4B223A1FC500BEC049 /* refresh.graphql */,
 			);
 			path = GraphQL;
 			sourceTree = "<group>";
@@ -334,6 +342,7 @@
 				68F43CE8222D1719003258A3 /* Shape.swift */,
 				68F43CEC222D2FF0003258A3 /* Colors.swift */,
 				683E4B2B22354531009F92E5 /* Base.swift */,
+				683CFA4D223A254400BEC049 /* CoreData.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -584,10 +593,12 @@
 				683BBC03222E571C001F4F83 /* Ideas.storyboard in Resources */,
 				683255822227F673001D4743 /* LaunchScreen.storyboard in Resources */,
 				684246AD222F8EBE00D59363 /* baseline-sort-24px.png in Resources */,
+				683CFA4C223A1FC500BEC049 /* refresh.graphql in Resources */,
 				684246A0222F8EA900D59363 /* ic_search_white@2x.png in Resources */,
 				684246AF222F951600D59363 /* ic_add_white.png in Resources */,
 				6847F37122309274009239F4 /* settings.png in Resources */,
 				684246B5222FD7CB00D59363 /* ic_favorite.png in Resources */,
+				683CFA4A223A181300BEC049 /* simple_profile.graphql in Resources */,
 				684246A1222F8EA900D59363 /* ic_search_white@3x.png in Resources */,
 				684246A5222F8EB500D59363 /* ic_menu@3x.png in Resources */,
 				683BBC05222E5726001F4F83 /* QuickMemo.storyboard in Resources */,
@@ -747,6 +758,7 @@
 				683E4B2722354356009F92E5 /* IdeasSelectCategoryVC.swift in Sources */,
 				683C909722367B140069BC50 /* QuickMemoDetailVC.swift in Sources */,
 				684246BA222FDCF300D59363 /* IdeasCell.swift in Sources */,
+				683CFA4E223A254400BEC049 /* CoreData.swift in Sources */,
 				68F43CF0222D5E83003258A3 /* SignUpVC.swift in Sources */,
 				683BBC0C222E5804001F4F83 /* IdeasVC.swift in Sources */,
 				683E4B2E22354871009F92E5 /* IdeasDetailVC.swift in Sources */,
