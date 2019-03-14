@@ -20,18 +20,22 @@ class LoginVC: UIViewController {
                 AuthMutation(password: PassWordInput.text, email: IdInput.text))
             {result,error in
                 if (result?.data?.auth?.result?.asAuthField?.accessToken) != nil {
-//                    self.performSegue(withIdentifier: "toMain", sender: nil)
+                    self.performSegue(withIdentifier: "toMain", sender: nil)
                     
                     UserDefaults.standard.set(result?.data?.auth?.result?.asAuthField?.accessToken, forKey: "accessToken")
                     
                     UserDefaults.standard.set(result?.data?.auth?.result?.asAuthField?.refreshToken, forKey: "refreshToken")
                     
+                } else {
+                    self.showToast(msg: "아이디와 비밀번호를 다시 확인해주세요.")
                 }
                 
                 if error != nil {
                     print("error!")
                 }
             }
+        } else {
+            self.showToast(msg: "내용을 모두 입력해주세요")
         }
     }
     

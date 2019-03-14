@@ -53,23 +53,10 @@ class MainVC : ButtonBarPagerTabStripViewController{
         
         present(alert, animated: true, completion: nil)
     }
+
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.isNavigationBarHidden = false
-        
-        apollo.fetch(query: SimpleProfileQuery(token: UserDefaults.standard.value(forKey: "accessToken") as? String)){ result,error in
-        
-            if(!(result?.data?.profile?.asProfileField?.email?.isEmpty ?? true)){
-                    UserDefaults.standard.set(result?.data?.profile?.asProfileField?.email ?? "", forKey: "email")
-                    UserDefaults.standard.set(result?.data?.profile?.asProfileField?.username ?? "", forKey: "username")
-                    UserDefaults.standard.set(result?.data?.profile?.asProfileField?.rank ?? "", forKey: "rank")
-                    UserDefaults.standard.set(result?.data?.profile?.asProfileField?.point ?? "", forKey: "point" )
-            } else {
-                self.showToast(msg: "계정 정보 불러오기 실패")
-            }
-            
-        }
-       
+        navigationController?.isNavigationBarHidden = false       
     }
 
     override func viewDidLoad() {

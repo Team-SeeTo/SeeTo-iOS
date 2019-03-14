@@ -11,10 +11,27 @@ import UIKit
 
 class MainMenuVC : UIViewController {
     @IBOutlet weak var tableview: UITableView!
+    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var rank: UILabel!
+    @IBOutlet weak var point: UILabel!
     
     override func viewDidLoad() {
         tableview.delegate = self
         tableview.dataSource = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        apollo.fetch(query: SimpleProfileQuery(token: UserDefaults.standard.value(forKey: "accessToken") as? String)){ result,error in
+            
+            if(!(result?.data?.profile?.asProfileField?.email?.isEmpty ?? true)){
+                self.userName.text = "\(result?.data?.profile?.asProfileField?.username ?? "")"
+                self.rank.text = "My rank : #\(result?.data?.profile?.asProfileField?.rank ?? 0)"
+               self.point.text = "\(result?.data?.profile?.asProfileField?.point ?? 0)p"
+            } else {
+                self.showToast(msg: "계정 정보 불러오기 실패")
+            }
+            
+        }
     }
 }
 
