@@ -280,6 +280,185 @@ public final class RegisterMutation: GraphQLMutation {
   }
 }
 
+public final class NewIdeaMutation: GraphQLMutation {
+  public let operationDefinition =
+    "mutation NewIdea($category: String, $token: String, $body: String, $title: String) {\n  newIdea(category: $category, token: $token, body: $body, title: $title) {\n    __typename\n    ... on NewIdeaMutation {\n      result {\n        __typename\n        ... on ResponseMessageField {\n          isSuccess\n          message\n        }\n      }\n    }\n  }\n}"
+
+  public var category: String?
+  public var token: String?
+  public var body: String?
+  public var title: String?
+
+  public init(category: String? = nil, token: String? = nil, body: String? = nil, title: String? = nil) {
+    self.category = category
+    self.token = token
+    self.body = body
+    self.title = title
+  }
+
+  public var variables: GraphQLMap? {
+    return ["category": category, "token": token, "body": body, "title": title]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Mutation"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("newIdea", arguments: ["category": GraphQLVariable("category"), "token": GraphQLVariable("token"), "body": GraphQLVariable("body"), "title": GraphQLVariable("title")], type: .object(NewIdea.selections)),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(newIdea: NewIdea? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "newIdea": newIdea.flatMap { (value: NewIdea) -> ResultMap in value.resultMap }])
+    }
+
+    public var newIdea: NewIdea? {
+      get {
+        return (resultMap["newIdea"] as? ResultMap).flatMap { NewIdea(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "newIdea")
+      }
+    }
+
+    public struct NewIdea: GraphQLSelectionSet {
+      public static let possibleTypes = ["NewIdeaMutation"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("result", type: .object(Result.selections)),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(result: Result? = nil) {
+        self.init(unsafeResultMap: ["__typename": "NewIdeaMutation", "result": result.flatMap { (value: Result) -> ResultMap in value.resultMap }])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var result: Result? {
+        get {
+          return (resultMap["result"] as? ResultMap).flatMap { Result(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "result")
+        }
+      }
+
+      public struct Result: GraphQLSelectionSet {
+        public static let possibleTypes = ["ResponseMessageField", "AuthInfoField"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLTypeCase(
+            variants: ["ResponseMessageField": AsResponseMessageField.selections],
+            default: [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            ]
+          )
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public static func makeAuthInfoField() -> Result {
+          return Result(unsafeResultMap: ["__typename": "AuthInfoField"])
+        }
+
+        public static func makeResponseMessageField(isSuccess: Bool? = nil, message: String? = nil) -> Result {
+          return Result(unsafeResultMap: ["__typename": "ResponseMessageField", "isSuccess": isSuccess, "message": message])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var asResponseMessageField: AsResponseMessageField? {
+          get {
+            if !AsResponseMessageField.possibleTypes.contains(__typename) { return nil }
+            return AsResponseMessageField(unsafeResultMap: resultMap)
+          }
+          set {
+            guard let newValue = newValue else { return }
+            resultMap = newValue.resultMap
+          }
+        }
+
+        public struct AsResponseMessageField: GraphQLSelectionSet {
+          public static let possibleTypes = ["ResponseMessageField"]
+
+          public static let selections: [GraphQLSelection] = [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("isSuccess", type: .scalar(Bool.self)),
+            GraphQLField("message", type: .scalar(String.self)),
+          ]
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(isSuccess: Bool? = nil, message: String? = nil) {
+            self.init(unsafeResultMap: ["__typename": "ResponseMessageField", "isSuccess": isSuccess, "message": message])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var isSuccess: Bool? {
+            get {
+              return resultMap["isSuccess"] as? Bool
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "isSuccess")
+            }
+          }
+
+          public var message: String? {
+            get {
+              return resultMap["message"] as? String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "message")
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 public final class SimpleProfileQuery: GraphQLQuery {
   public let operationDefinition =
     "query simpleProfile($token: String) {\n  profile(token: $token) {\n    __typename\n    ... on ProfileField {\n      imgPath\n      email\n      username\n      rank\n      point\n      registerOn\n    }\n  }\n}"

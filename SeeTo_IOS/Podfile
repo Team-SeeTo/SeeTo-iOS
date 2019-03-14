@@ -6,6 +6,7 @@ target 'SeeTo_IOS' do
   use_frameworks!
 	pod 'XLPagerTabStrip', '~> 8.1'
 	pod 'Apollo', '~> 0.9.4'
+	pod 'UITextView+Placeholder'
 
   # Pods for SeeTo_IOS
 

@@ -56,4 +56,6 @@ extension IdeasVC : UITableViewDataSource, UITableViewDelegate{
         
         self.navigationController?.pushViewController(IdeasDetail!, animated: true)
     }
+    
+    
 }

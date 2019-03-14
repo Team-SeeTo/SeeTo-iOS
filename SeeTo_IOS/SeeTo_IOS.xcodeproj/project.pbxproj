@@ -40,6 +40,7 @@
 		683CFA4A223A181300BEC049 /* simple_profile.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 683CFA49223A181300BEC049 /* simple_profile.graphql */; };
 		683CFA4C223A1FC500BEC049 /* refresh.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 683CFA4B223A1FC500BEC049 /* refresh.graphql */; };
 		683CFA4E223A254400BEC049 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683CFA4D223A254400BEC049 /* CoreData.swift */; };
+		683CFA50223A6B1700BEC049 /* new_ideas.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 683CFA4F223A6B1700BEC049 /* new_ideas.graphql */; };
 		683E4B2322353866009F92E5 /* TodoSelectModeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683E4B2222353866009F92E5 /* TodoSelectModeVC.swift */; };
 		683E4B2522353C4F009F92E5 /* TodoSelectDateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683E4B2422353C4F009F92E5 /* TodoSelectDateVC.swift */; };
 		683E4B2722354356009F92E5 /* IdeasSelectCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683E4B2622354356009F92E5 /* IdeasSelectCategoryVC.swift */; };
@@ -138,6 +139,7 @@
 		683CFA49223A181300BEC049 /* simple_profile.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = simple_profile.graphql; sourceTree = "<group>"; };
 		683CFA4B223A1FC500BEC049 /* refresh.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = refresh.graphql; sourceTree = "<group>"; };
 		683CFA4D223A254400BEC049 /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
+		683CFA4F223A6B1700BEC049 /* new_ideas.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = new_ideas.graphql; sourceTree = "<group>"; };
 		683E4B2222353866009F92E5 /* TodoSelectModeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoSelectModeVC.swift; sourceTree = "<group>"; };
 		683E4B2422353C4F009F92E5 /* TodoSelectDateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoSelectDateVC.swift; sourceTree = "<group>"; };
 		683E4B2622354356009F92E5 /* IdeasSelectCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasSelectCategoryVC.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				680BAF6922389A6F00C09F9B /* login.graphql */,
 				683CFA49223A181300BEC049 /* simple_profile.graphql */,
 				683CFA4B223A1FC500BEC049 /* refresh.graphql */,
+				683CFA4F223A6B1700BEC049 /* new_ideas.graphql */,
 			);
 			path = GraphQL;
 			sourceTree = "<group>";
@@ -316,6 +319,10 @@
 		683255A62227F67F001D4743 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				68424691222F54EE00D59363 /* Todos */,
+				68424692222F54F500D59363 /* TimeLine */,
+				68424693222F54FC00D59363 /* Ideas */,
+				68424694222F550300D59363 /* QuickMemo */,
 				683BBC06222E57DE001F4F83 /* Main */,
 				68F43CF1222D6393003258A3 /* Login */,
 			);
@@ -369,10 +376,6 @@
 				683255762227F672001D4743 /* MainVC.swift */,
 				6847F375223092DA009239F4 /* MainMenuCell.swift */,
 				6847F3772230957A009239F4 /* MainMenuVC.swift */,
-				68424694222F550300D59363 /* QuickMemo */,
-				68424693222F54FC00D59363 /* Ideas */,
-				68424692222F54F500D59363 /* TimeLine */,
-				68424691222F54EE00D59363 /* Todos */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -601,6 +604,7 @@
 				683CFA4A223A181300BEC049 /* simple_profile.graphql in Resources */,
 				684246A1222F8EA900D59363 /* ic_search_white@3x.png in Resources */,
 				684246A5222F8EB500D59363 /* ic_menu@3x.png in Resources */,
+				683CFA50223A6B1700BEC049 /* new_ideas.graphql in Resources */,
 				683BBC05222E5726001F4F83 /* QuickMemo.storyboard in Resources */,
 				68F43CEE222D5E29003258A3 /* hoodson_free_font.ttf in Resources */,
 				6847F37422309274009239F4 /* leaderboard.png in Resources */,
@@ -649,6 +653,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SeeTo_IOS/Pods-SeeTo_IOS-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Apollo/Apollo.framework",
+				"${BUILT_PRODUCTS_DIR}/UITextView+Placeholder/UITextView_Placeholder.framework",
 				"${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -656,6 +661,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Apollo.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITextView_Placeholder.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLPagerTabStrip.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

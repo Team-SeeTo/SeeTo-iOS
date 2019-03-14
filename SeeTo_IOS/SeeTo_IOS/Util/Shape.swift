@@ -45,3 +45,12 @@ class FabShape: UIButton {
     }
 }
 
+class TextViewShpae : UITextView{
+    override func awakeFromNib() {
+        setShape()
+    }
+    
+    func setShape(){
+        
+    }
+}

@@ -2,21 +2,25 @@ PODS:
   - Apollo (0.9.4):
     - Apollo/Core (= 0.9.4)
   - Apollo/Core (0.9.4)
+  - "UITextView+Placeholder (1.2.1)"
   - XLPagerTabStrip (8.1.0)
 
 DEPENDENCIES:
   - Apollo (~> 0.9.4)
+  - "UITextView+Placeholder"
   - XLPagerTabStrip (~> 8.1)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Apollo
+    - "UITextView+Placeholder"
     - XLPagerTabStrip
 
 SPEC CHECKSUMS:
   Apollo: 450856adbdebcdf28c3c671f81732ac3f9944065
+  "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
   XLPagerTabStrip: 22d4c58200d7c105e0e407ab6bfd01a5d85014be
 
-PODFILE CHECKSUM: f718e4aec858db71f9c5d0895d3db21e1fb99786
+PODFILE CHECKSUM: c8a01e1e1206bd4a420ef6218fb2c1fd5e164d72
 
 COCOAPODS: 1.5.3

@@ -20,6 +20,10 @@ class LoginVC: UIViewController {
                 AuthMutation(password: PassWordInput.text, email: IdInput.text))
             {result,error in
                 if (result?.data?.auth?.result?.asAuthField?.accessToken) != nil {
+                    self.dismiss(animated: true, completion: nil)
+                    
+                    self.navigationController?.popViewController(animated: false)
+                    
                     self.performSegue(withIdentifier: "toMain", sender: nil)
                     
                     UserDefaults.standard.set(result?.data?.auth?.result?.asAuthField?.accessToken, forKey: "accessToken")

@@ -11,8 +11,8 @@ import UIKit
 
 class IdeasSelectCategoryVC : UIViewController {
     @IBOutlet weak var PickerView: UIPickerView!
-    
     let Categorys = ["IT","Life","Food"]
+    var currentItem = ""
     
     override func viewDidLoad() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "next", style: .plain, target: self, action: #selector(IdeasSelectCategoryVC.goNext))
@@ -37,13 +37,22 @@ UIPickerViewDataSource{
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
+        currentItem = Categorys[row]
     }
     
     @objc func goNext(){
-        let WriteContent = self.storyboard?.instantiateViewController(withIdentifier: "IdeasWriteContent")
-        
-        self.navigationController?.pushViewController(WriteContent!, animated: true)
+//        let WriteContent = self.storyboard?.instantiateViewController(withIdentifier: "IdeasWriteContent")
+//
+//        self.navigationController?.pushViewController(WriteContent!, animated: true)
+        self.performSegue(withIdentifier: "toWriteContent", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toWriteContent" {
+            let WriteContent = segue.destination as! IdeasWriteContentVC
+            
+            WriteContent.category = currentItem
+        }
     }
     
 }

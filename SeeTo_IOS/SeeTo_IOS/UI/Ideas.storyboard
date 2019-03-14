@@ -341,16 +341,17 @@
                     </view>
                     <connections>
                         <outlet property="PickerView" destination="Gz9-ak-dNv" id="GOV-Uk-OsB"/>
+                        <segue destination="Fny-Cz-oKA" kind="show" identifier="toWriteContent" id="V3T-K3-RVd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Okd-Hr-of3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1439" y="-267"/>
         </scene>
-        <!--View Controller-->
+        <!--Ideas Write ContentVC-->
         <scene sceneID="cY7-Hj-kqd">
             <objects>
-                <viewController storyboardIdentifier="IdeasWriteContent" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Fny-Cz-oKA" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IdeasWriteContent" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Fny-Cz-oKA" customClass="IdeasWriteContentVC" customModule="SeeTo_IOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZJf-XF-hEw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -365,14 +366,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="muf-Ue-MjC">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="muf-Ue-MjC">
                                 <rect key="frame" x="47.666666666666657" y="206" width="280" height="400"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="7KR-py-n2s"/>
                                     <constraint firstAttribute="height" constant="400" id="gRD-FO-N7j"/>
                                 </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" red="0.76639676089999997" green="0.63533860450000001" blue="0.98042803999999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -387,6 +387,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JDj-zA-DDC"/>
                     </view>
+                    <connections>
+                        <outlet property="Ideas_content" destination="muf-Ue-MjC" id="R4y-iv-1y9"/>
+                        <outlet property="Ideas_title" destination="uko-s0-yPg" id="q9c-09-Rs4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8WK-I4-Tce" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
