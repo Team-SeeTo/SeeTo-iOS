@@ -25,6 +25,8 @@
 		683255AA2227F738001D4743 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 683255A92227F738001D4743 /* Login.storyboard */; };
 		683255AE2227F75B001D4743 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683255AD2227F75B001D4743 /* LoginVC.swift */; };
 		683255B02227F77E001D4743 /* signin.png in Resources */ = {isa = PBXBuildFile; fileRef = 683255AF2227F77E001D4743 /* signin.png */; };
+		68380455223B21F4004B73DD /* StoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68380454223B21F4004B73DD /* StoreVC.swift */; };
+		68380459223B254E004B73DD /* StoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68380458223B254E004B73DD /* StoreCell.swift */; };
 		68392FF022300B4800D14594 /* TimeLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68392FEF22300B4800D14594 /* TimeLineCell.swift */; };
 		68392FF3223010AB00D14594 /* ic_more_vert.png in Resources */ = {isa = PBXBuildFile; fileRef = 68392FF2223010AB00D14594 /* ic_more_vert.png */; };
 		68392FF52230114800D14594 /* QuickMemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68392FF42230114700D14594 /* QuickMemoCell.swift */; };
@@ -75,7 +77,7 @@
 		68F43CED222D2FF0003258A3 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F43CEC222D2FF0003258A3 /* Colors.swift */; };
 		68F43CEE222D5E29003258A3 /* hoodson_free_font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 683255B52227FCF2001D4743 /* hoodson_free_font.ttf */; };
 		68F43CF0222D5E83003258A3 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F43CEF222D5E83003258A3 /* SignUpVC.swift */; };
-		CF4C5FF0C7E809BBF1EE1925 /* Pods_SeeTo_IOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C22CF7F2EA9CB9440B3A488 /* Pods_SeeTo_IOS.framework */; };
+		91706B6472B086B3FB1353D9 /* Pods_SeeTo_IOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C22CF7F2EA9CB9440B3A488 /* Pods_SeeTo_IOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +126,8 @@
 		683255AD2227F75B001D4743 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		683255AF2227F77E001D4743 /* signin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signin.png; sourceTree = "<group>"; };
 		683255B52227FCF2001D4743 /* hoodson_free_font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = hoodson_free_font.ttf; sourceTree = "<group>"; };
+		68380454223B21F4004B73DD /* StoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreVC.swift; sourceTree = "<group>"; };
+		68380458223B254E004B73DD /* StoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCell.swift; sourceTree = "<group>"; };
 		68392FEF22300B4800D14594 /* TimeLineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineCell.swift; sourceTree = "<group>"; };
 		68392FF2223010AB00D14594 /* ic_more_vert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_more_vert.png; sourceTree = "<group>"; };
 		68392FF42230114700D14594 /* QuickMemoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickMemoCell.swift; sourceTree = "<group>"; };
@@ -184,7 +188,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF4C5FF0C7E809BBF1EE1925 /* Pods_SeeTo_IOS.framework in Frameworks */,
+				91706B6472B086B3FB1353D9 /* Pods_SeeTo_IOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +323,7 @@
 		683255A62227F67F001D4743 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				68380453223B21C9004B73DD /* Menu */,
 				68424691222F54EE00D59363 /* Todos */,
 				68424692222F54F500D59363 /* TimeLine */,
 				68424693222F54FC00D59363 /* Ideas */,
@@ -362,6 +367,25 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		68380453223B21C9004B73DD /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				68380456223B2527004B73DD /* Store,Inven */,
+				6847F375223092DA009239F4 /* MainMenuCell.swift */,
+				6847F3772230957A009239F4 /* MainMenuVC.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		68380456223B2527004B73DD /* Store,Inven */ = {
+			isa = PBXGroup;
+			children = (
+				68380454223B21F4004B73DD /* StoreVC.swift */,
+				68380458223B254E004B73DD /* StoreCell.swift */,
+			);
+			path = "Store,Inven";
+			sourceTree = "<group>";
+		};
 		68392FF12230108300D14594 /* QuickMemoCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -374,8 +398,6 @@
 			isa = PBXGroup;
 			children = (
 				683255762227F672001D4743 /* MainVC.swift */,
-				6847F375223092DA009239F4 /* MainMenuCell.swift */,
-				6847F3772230957A009239F4 /* MainMenuVC.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -693,7 +715,7 @@
 		};
 		680BAF632238994900C09F9B /* Generate Apollo GraphQL API */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -760,6 +782,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68380455223B21F4004B73DD /* StoreVC.swift in Sources */,
 				68415A562236A74F005A5A7A /* TodoStandardCell.swift in Sources */,
 				683E4B2722354356009F92E5 /* IdeasSelectCategoryVC.swift in Sources */,
 				683C909722367B140069BC50 /* QuickMemoDetailVC.swift in Sources */,
@@ -770,6 +793,7 @@
 				683E4B2E22354871009F92E5 /* IdeasDetailVC.swift in Sources */,
 				680BAF6822389A4700C09F9B /* API.swift in Sources */,
 				683E4B2522353C4F009F92E5 /* TodoSelectDateVC.swift in Sources */,
+				68380459223B254E004B73DD /* StoreCell.swift in Sources */,
 				68F43CE9222D1719003258A3 /* Shape.swift in Sources */,
 				681175D922325C9D00E98BDE /* TodoSelectCategoryVC.swift in Sources */,
 				683BBC0E222E580F001F4F83 /* QuickMemoVC.swift in Sources */,

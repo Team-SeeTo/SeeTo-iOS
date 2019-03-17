@@ -13,9 +13,13 @@ class TodoSelectDateVC : UIViewController {
    
     @IBOutlet weak var DatePicker: UIDatePicker!
     
-    
     override func viewDidLoad() {
-        self.navigationController?.navigationBar.tintColor = Color.PURPLE.getColor()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "next", style: .plain, target: self, action: #selector(TodoSelectDateVC.goNext))
     }
 }
 
+extension TodoSelectDateVC {
+    @objc func goNext() {
+        
+    }
+}
