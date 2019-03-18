@@ -15,8 +15,6 @@ class IdeasVC : UIViewController, IndicatorInfoProvider {
     override func viewDidLoad() {
         tableview.dataSource = self
         tableview.delegate = self
-        
-
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {

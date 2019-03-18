@@ -1,26 +1,45 @@
 PODS:
-  - Apollo (0.9.4):
-    - Apollo/Core (= 0.9.4)
-  - Apollo/Core (0.9.4)
+  - Apollo (0.9.5):
+    - Apollo/Core (= 0.9.5)
+  - Apollo/Core (0.9.5)
+  - RxApolloClient (0.1.0):
+    - Apollo (~> 0.9.4)
+    - RxSwift (~> 4.0)
+  - RxAtomic (4.4.2)
+  - RxCocoa (4.4.2):
+    - RxSwift (>= 4.4.2, ~> 4.4)
+  - RxSwift (4.4.2):
+    - RxAtomic (>= 4.4.2, ~> 4.4)
   - "UITextView+Placeholder (1.2.1)"
-  - XLPagerTabStrip (8.1.0)
+  - XLPagerTabStrip (8.1.1)
 
 DEPENDENCIES:
   - Apollo (~> 0.9.4)
+  - RxApolloClient
+  - RxCocoa (~> 4.0)
+  - RxSwift (~> 4.0)
   - "UITextView+Placeholder"
   - XLPagerTabStrip (~> 8.1)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Apollo
+    - RxApolloClient
+    - RxAtomic
+    - RxCocoa
+    - RxSwift
     - "UITextView+Placeholder"
     - XLPagerTabStrip
 
 SPEC CHECKSUMS:
-  Apollo: 450856adbdebcdf28c3c671f81732ac3f9944065
+  Apollo: 19caf3246d292bbb69ecad1bd098661f78222aba
+  RxApolloClient: 33a9b145c6990d77bd240ff3b1395b6115ecb82c
+  RxAtomic: d00e97c10db88c6f08540e0bf2752fc5a2404167
+  RxCocoa: 477990dc3b4c3ff55fb0ac77e1cc06244e0aaec8
+  RxSwift: 74c29b693c8e42b0f64400e8b06564575742d649
   "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
-  XLPagerTabStrip: 22d4c58200d7c105e0e407ab6bfd01a5d85014be
+  XLPagerTabStrip: 63166e21c9844fa30f2d95d30f335e73be5caf22
 
-PODFILE CHECKSUM: c8a01e1e1206bd4a420ef6218fb2c1fd5e164d72
+PODFILE CHECKSUM: 74ca39f6615169c4e79e78f1b3653fe3619305a7
 
 COCOAPODS: 1.5.3

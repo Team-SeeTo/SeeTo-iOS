@@ -68,10 +68,6 @@ class MainVC : ButtonBarPagerTabStripViewController{
         settings.style.selectedBarBackgroundColor = Color.PURPLE.getColor()
         buttonBarView.selectedBar.backgroundColor = settings.style.selectedBarBackgroundColor
         
-        print("ㅁㄴㅇㄹ\(String(describing: UserDefaults.standard.value(forKey: "accessToken") as! String))")
-        print("ㅁㄴㅇㄹ\(String(describing: UserDefaults.standard.value(forKey: "refreshToken") as! String))")
-
-        
         changeCurrentIndexProgressive = { [weak self] (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
             guard changeCurrentIndex == true else { return }
             oldCell?.label.textColor = Color.GREY.getColor()

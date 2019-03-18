@@ -12,6 +12,8 @@ import XLPagerTabStrip
 
 class TimeLineVC : UIViewController , IndicatorInfoProvider {
     @IBOutlet weak var tableview: UITableView!
+    
+    let title_array = ["Todo", "Ideas"]
     override func viewDidLoad() {
         tableview.dataSource = self
         tableview.delegate = self
@@ -23,12 +25,13 @@ class TimeLineVC : UIViewController , IndicatorInfoProvider {
 
 extension TimeLineVC : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return title_array.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableview.dequeueReusableCell(withIdentifier: "TLCell", for: indexPath as IndexPath) as! TimeLineCell
         
+        cell.Title.text = title_array[indexPath.row]
         cell.FirstNumber.text = "13"
         cell.SecondNumber.text = "7"
         cell.ThirdNumber.text = "2"
@@ -43,6 +46,6 @@ extension TimeLineVC : UITableViewDelegate, UITableViewDataSource{
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return title_array.count
     }
 }

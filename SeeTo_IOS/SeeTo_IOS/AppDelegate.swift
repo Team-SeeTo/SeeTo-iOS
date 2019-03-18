@@ -12,13 +12,10 @@ import Apollo
 
 let apollo = ApolloClient(url: URL(string: "http://114.108.135.15:5005/graphql")!)
 
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         return true

@@ -13,19 +13,23 @@ class StoreVC : UIViewController {
     @IBOutlet weak var StoreTableView: UITableView!
     
     override func viewDidLoad() {
-        StoreTableView.delegate = self
-        StoreTableView.dataSource = self
+//        StoreTableView.delegate = self
+//        StoreTableView.dataSource = self
     }
 }
 
-extension StoreVC : UITableViewDataSource, UITableViewDelegate  {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableView {
-    
-    }
-}
+//extension StoreVC : UITableViewDataSource, UITableViewDelegate  {
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//
+//    }
+//    
+//
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return 1
+//    }
+//
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableView {
+//
+//    }
+//}

@@ -5,8 +5,11 @@ target 'SeeTo_IOS' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 	pod 'XLPagerTabStrip', '~> 8.1'
-	pod 'Apollo', '~> 0.9.4'
 	pod 'UITextView+Placeholder'
+	pod 'Apollo', '~> 0.9.4'
+	pod 'RxSwift', '~> 4.0'
+        pod 'RxCocoa','~> 4.0'
+	pod 'RxApolloClient'
 
   # Pods for SeeTo_IOS
 
