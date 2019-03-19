@@ -24,6 +24,7 @@ class MainMenuVC : UIViewController {
     override func viewDidLoad() {
         tableview.delegate = self
         tableview.dataSource = self
+        tableview.isScrollEnabled = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,6 +53,15 @@ extension MainMenuVC : UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch (indexPath.row){
+        case 0 :
+            let store = self.storyboard?.instantiateViewController(withIdentifier: "StoreTabVC")
+            self.navigationController?.pushViewController(store!, animated: true)
+            break
+        default:
+            break
+        }
+    }
     
 }

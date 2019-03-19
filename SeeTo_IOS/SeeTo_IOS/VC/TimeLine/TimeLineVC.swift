@@ -14,9 +14,14 @@ class TimeLineVC : UIViewController , IndicatorInfoProvider {
     @IBOutlet weak var tableview: UITableView!
     
     let title_array = ["Todo", "Ideas"]
+    let firstStr_array = ["Milestones completed","Ideas voted"]
+    let secondStr_array = ["Todos completed", "Ideas commented"]
+    let thirdStr_array = ["Todos created", "Ideas created"]
+    
     override func viewDidLoad() {
         tableview.dataSource = self
         tableview.delegate = self
+        tableview.isScrollEnabled = false
     }
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "TimeLine")
@@ -32,6 +37,9 @@ extension TimeLineVC : UITableViewDelegate, UITableViewDataSource{
         let cell = tableview.dequeueReusableCell(withIdentifier: "TLCell", for: indexPath as IndexPath) as! TimeLineCell
         
         cell.Title.text = title_array[indexPath.row]
+        cell.FirstString.text = firstStr_array[indexPath.row]
+        cell.SecondString.text = secondStr_array[indexPath.row]
+        cell.ThirdString.text = thirdStr_array[indexPath.row]
         cell.FirstNumber.text = "13"
         cell.SecondNumber.text = "7"
         cell.ThirdNumber.text = "2"
@@ -46,6 +54,6 @@ extension TimeLineVC : UITableViewDelegate, UITableViewDataSource{
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return title_array.count
+        return 1
     }
 }

@@ -30,6 +30,8 @@
 		68392FF022300B4800D14594 /* TimeLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68392FEF22300B4800D14594 /* TimeLineCell.swift */; };
 		68392FF3223010AB00D14594 /* ic_more_vert.png in Resources */ = {isa = PBXBuildFile; fileRef = 68392FF2223010AB00D14594 /* ic_more_vert.png */; };
 		68392FF52230114800D14594 /* QuickMemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68392FF42230114700D14594 /* QuickMemoCell.swift */; };
+		683AFF74223FE1A4008BDA2E /* InventoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683AFF73223FE1A3008BDA2E /* InventoryCell.swift */; };
+		683AFF76223FE1F9008BDA2E /* InventoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683AFF75223FE1F9008BDA2E /* InventoryVC.swift */; };
 		683BBBFF222E56EE001F4F83 /* Todos.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 683BBBFE222E56EE001F4F83 /* Todos.storyboard */; };
 		683BBC01222E56FD001F4F83 /* TimeLine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 683BBC00222E56FD001F4F83 /* TimeLine.storyboard */; };
 		683BBC03222E571C001F4F83 /* Ideas.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 683BBC02222E571C001F4F83 /* Ideas.storyboard */; };
@@ -131,6 +133,8 @@
 		68392FEF22300B4800D14594 /* TimeLineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineCell.swift; sourceTree = "<group>"; };
 		68392FF2223010AB00D14594 /* ic_more_vert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_more_vert.png; sourceTree = "<group>"; };
 		68392FF42230114700D14594 /* QuickMemoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickMemoCell.swift; sourceTree = "<group>"; };
+		683AFF73223FE1A3008BDA2E /* InventoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryCell.swift; sourceTree = "<group>"; };
+		683AFF75223FE1F9008BDA2E /* InventoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryVC.swift; sourceTree = "<group>"; };
 		683BBBFE222E56EE001F4F83 /* Todos.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Todos.storyboard; sourceTree = "<group>"; };
 		683BBC00222E56FD001F4F83 /* TimeLine.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TimeLine.storyboard; sourceTree = "<group>"; };
 		683BBC02222E571C001F4F83 /* Ideas.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Ideas.storyboard; sourceTree = "<group>"; };
@@ -382,6 +386,8 @@
 			children = (
 				68380454223B21F4004B73DD /* StoreVC.swift */,
 				68380458223B254E004B73DD /* StoreCell.swift */,
+				683AFF73223FE1A3008BDA2E /* InventoryCell.swift */,
+				683AFF75223FE1F9008BDA2E /* InventoryVC.swift */,
 			);
 			path = "Store,Inven";
 			sourceTree = "<group>";
@@ -791,6 +797,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				68380455223B21F4004B73DD /* StoreVC.swift in Sources */,
+				683AFF74223FE1A4008BDA2E /* InventoryCell.swift in Sources */,
 				68415A562236A74F005A5A7A /* TodoStandardCell.swift in Sources */,
 				683E4B2722354356009F92E5 /* IdeasSelectCategoryVC.swift in Sources */,
 				683C909722367B140069BC50 /* QuickMemoDetailVC.swift in Sources */,
@@ -808,6 +815,7 @@
 				68392FF52230114800D14594 /* QuickMemoCell.swift in Sources */,
 				68F43CED222D2FF0003258A3 /* Colors.swift in Sources */,
 				683E4B2C22354531009F92E5 /* Base.swift in Sources */,
+				683AFF76223FE1F9008BDA2E /* InventoryVC.swift in Sources */,
 				683255772227F672001D4743 /* MainVC.swift in Sources */,
 				6832557D2227F672001D4743 /* SeeTo_IOS.xcdatamodeld in Sources */,
 				68415A542236A710005A5A7A /* TodoInfinityCell.swift in Sources */,

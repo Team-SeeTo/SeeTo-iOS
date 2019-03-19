@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 
 extension UIViewController{
+    
+    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 
 func showToast(msg: String, fun: (() -> Void)? = nil){
     let toast = UILabel(frame: CGRect(x: 32, y: 700, width: view.frame.size.width - 64, height: 42))

@@ -16,6 +16,7 @@ class LoginVC: UIViewController {
     @IBOutlet weak var PassWordInput: UITextField!
     let userdefault = UserDefaults.standard
     
+    
     @IBAction func LoginBtn(_ sender: Any) {
         if(!IdInput.text!.isEmpty && !PassWordInput.text!.isEmpty){
             _ = apollo.rx.perform(mutation: AuthMutation(password: PassWordInput.text, email: IdInput.text))
@@ -43,3 +44,4 @@ class LoginVC: UIViewController {
         navigationController?.isNavigationBarHidden = true
     }
 }
+
