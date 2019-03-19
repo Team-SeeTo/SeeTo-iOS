@@ -11,6 +11,8 @@ import UIKit
 import XLPagerTabStrip
 
 class QuickMemoVC : UIViewController , IndicatorInfoProvider{
+    
+    
     @IBOutlet weak var tableview: UITableView!
     override func viewDidLoad() {
         tableview.dataSource = self

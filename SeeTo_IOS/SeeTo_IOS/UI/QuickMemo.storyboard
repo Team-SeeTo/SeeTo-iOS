@@ -37,19 +37,19 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FRU-eY-EBn">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="47"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="355" height="47"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B95-iJ-JYE">
-                                                            <rect key="frame" x="347" y="11" width="13" height="24"/>
+                                                            <rect key="frame" x="333" y="11" width="13" height="24"/>
                                                             <state key="normal" image="ic_more_vert.png"/>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.88320368528366089" green="0.80807071924209595" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="B95-iJ-JYE" secondAttribute="trailing" constant="15" id="6cm-ow-Oju"/>
-                                                        <constraint firstItem="B95-iJ-JYE" firstAttribute="top" secondItem="FRU-eY-EBn" secondAttribute="top" constant="11" id="mcb-3w-yV4"/>
-                                                        <constraint firstItem="B95-iJ-JYE" firstAttribute="leading" secondItem="FRU-eY-EBn" secondAttribute="leading" constant="347" id="rhP-gr-e99"/>
-                                                        <constraint firstAttribute="bottom" secondItem="B95-iJ-JYE" secondAttribute="bottom" constant="12" id="tfn-Sr-hd0"/>
+                                                        <constraint firstAttribute="bottom" secondItem="B95-iJ-JYE" secondAttribute="bottom" constant="12" id="7gQ-UC-cTy"/>
+                                                        <constraint firstItem="B95-iJ-JYE" firstAttribute="leading" secondItem="FRU-eY-EBn" secondAttribute="leading" constant="333" id="NtF-Bm-d5E"/>
+                                                        <constraint firstItem="B95-iJ-JYE" firstAttribute="top" secondItem="FRU-eY-EBn" secondAttribute="top" constant="11" id="gv0-2h-zde"/>
+                                                        <constraint firstAttribute="trailing" secondItem="B95-iJ-JYE" secondAttribute="trailing" constant="9" id="lQg-Rp-sSb"/>
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="asdfasdfasdfasdfasdf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2FX-Ua-22h">
@@ -93,10 +93,10 @@
             </objects>
             <point key="canvasLocation" x="-418.39999999999998" y="-206.1576354679803"/>
         </scene>
-        <!--View Controller-->
+        <!--Quick Memo WirteVC-->
         <scene sceneID="FhH-QF-ujc">
             <objects>
-                <viewController id="8lq-18-7DZ" sceneMemberID="viewController">
+                <viewController id="8lq-18-7DZ" customClass="QuickMemoWirteVC" customModule="SeeTo_IOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qfY-h6-lJp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -108,7 +108,6 @@
                                     <constraint firstAttribute="height" constant="500" id="BZ2-qI-c7i"/>
                                     <constraint firstAttribute="width" constant="300" id="DKN-dh-I4D"/>
                                 </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" red="0.76639676094055176" green="0.63533860445022583" blue="0.98042804002761841" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -121,6 +120,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2bp-pe-cfQ"/>
                     </view>
+                    <connections>
+                        <outlet property="QuickMemoWriteTextView" destination="QCG-Cb-mih" id="cSg-Ih-F06"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7bY-2Z-xWI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -141,7 +143,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e8f-62-OeM">
                                 <rect key="frame" x="0.0" y="93" width="375" height="685"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Snz-iP-2l5">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Snz-iP-2l5">
                                         <rect key="frame" x="8" y="8" width="359" height="669"/>
                                         <color key="backgroundColor" red="0.91823095083236694" green="0.87216800451278687" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>

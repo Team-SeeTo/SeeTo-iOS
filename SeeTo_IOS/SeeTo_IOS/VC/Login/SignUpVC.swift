@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import RxApolloClient
 
 class SignUpVC: UIViewController {
     
@@ -21,24 +22,18 @@ class SignUpVC: UIViewController {
             NameInput.text != "" &&
             PassWordInput.text != ""){
             
-        let registerMutation = RegisterMutation(email: IdInput.text, username: NameInput.text, password: PassWordInput.text)
-            
-            apollo.perform(mutation: registerMutation){ result,error in
-                
-                if (result?.data?.register?.isSuccess ?? false){
+            _ = apollo.rx.perform(mutation: RegisterMutation(email: IdInput.text, username: NameInput.text, password: PassWordInput.text)).subscribe(onNext: { [weak self] res in
+                if(res.register?.isSuccess == nil) {self?.showToast(msg: "서버 요청 실패")}
+                if(res.register?.isSuccess == false) { self?.showToast(msg: "회원가입에 실패하였습니다.") }
+                else {
                     let alert = UIAlertController(title: "회원 가입이 완료되었습니다.", message: "", preferredStyle: .alert)
                     
                     alert.addAction(UIAlertAction(title: "OK", style: .default) {
-                        (OkBtn) in self.navigationController?.popViewController(animated: true)
-                        
-                        self.present(alert, animated: true, completion: nil)
-                        
+                        (OkBtn) in self?.navigationController?.popViewController(animated: true)
                     })
-                } else {
-                    print("실패 ㅜㅠ")
+                    self?.present(alert, animated: true, completion: nil)
                 }
-            }
-            
+            })
             
         } else {
             let alert = UIAlertController(title: "내용을 모두 입력해주세요.", message: "", preferredStyle: .alert)

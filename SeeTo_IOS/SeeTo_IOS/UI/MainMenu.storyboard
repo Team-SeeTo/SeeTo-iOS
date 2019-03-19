@@ -249,7 +249,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="G08-da-PSq"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="DAT-zI-FAZ"/>
+                    <tabBarItem key="tabBarItem" title="Store" image="Store_store.png" id="DAT-zI-FAZ"/>
                     <connections>
                         <outlet property="StoreTableView" destination="aeD-Gy-7qq" id="7xr-ZP-cr4"/>
                     </connections>
@@ -395,7 +395,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bmI-cy-Mfd"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="aRv-7I-8nb"/>
+                    <tabBarItem key="tabBarItem" title="Inventory" image="inventory.png" id="aRv-7I-8nb"/>
                     <connections>
                         <outlet property="tableView" destination="zlR-k2-03w" id="uay-9L-yPJ"/>
                     </connections>
@@ -406,6 +406,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Store_store.png" width="48" height="48"/>
+        <image name="inventory.png" width="48" height="48"/>
         <image name="store.png" width="24" height="24"/>
     </resources>
 </document>
