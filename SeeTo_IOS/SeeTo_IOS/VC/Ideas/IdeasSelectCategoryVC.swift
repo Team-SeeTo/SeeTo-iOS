@@ -41,9 +41,6 @@ UIPickerViewDataSource{
     }
     
     @objc func goNext(){
-//        let WriteContent = self.storyboard?.instantiateViewController(withIdentifier: "IdeasWriteContent")
-//
-//        self.navigationController?.pushViewController(WriteContent!, animated: true)
         self.performSegue(withIdentifier: "toWriteContent", sender: self)
     }
     
