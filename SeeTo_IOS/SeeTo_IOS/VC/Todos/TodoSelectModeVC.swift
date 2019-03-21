@@ -13,6 +13,8 @@ class TodoSelectModeVC : UIViewController {
     @IBOutlet weak var pickerview: UIPickerView!
     
     let modes = ["Standard","Hard","Infinity"]
+    var currentItem = ""
+    var category = ""
     
     override func viewDidLoad() {
         pickerview.dataSource = self
@@ -44,11 +46,16 @@ UIPickerViewDelegate {
     }
     
     @objc func goNext(){
-        let SelectDate = self.storyboard?.instantiateViewController(withIdentifier: "TodoSelectDate")
-        
-        self.navigationController?.pushViewController(SelectDate!, animated: true)
+        self.performSegue(withIdentifier: "toSelectDate", sender: self)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toSelectDate" {
+            let SelectDate = segue.destination as! TodoSelectDateVC
+            SelectDate.category = category
+            SelectDate.Mode = currentItem
+        }
+    }
     
 }
 

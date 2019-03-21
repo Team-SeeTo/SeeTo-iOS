@@ -2,6 +2,225 @@
 
 import Apollo
 
+/// An enumeration.
+public enum Type: RawRepresentable, Equatable, Hashable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+  public typealias RawValue = String
+  case infinity
+  case standard
+  case hard
+  /// Auto generated constant for unknown enum values
+  case __unknown(RawValue)
+
+  public init?(rawValue: RawValue) {
+    switch rawValue {
+      case "INFINITY": self = .infinity
+      case "STANDARD": self = .standard
+      case "HARD": self = .hard
+      default: self = .__unknown(rawValue)
+    }
+  }
+
+  public var rawValue: RawValue {
+    switch self {
+      case .infinity: return "INFINITY"
+      case .standard: return "STANDARD"
+      case .hard: return "HARD"
+      case .__unknown(let value): return value
+    }
+  }
+
+  public static func == (lhs: Type, rhs: Type) -> Bool {
+    switch (lhs, rhs) {
+      case (.infinity, .infinity): return true
+      case (.standard, .standard): return true
+      case (.hard, .hard): return true
+      case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
+      default: return false
+    }
+  }
+}
+
+public final class NewTodoMutation: GraphQLMutation {
+  public let operationDefinition =
+    "mutation NewTodo($title: String, $token: String, $milestones: [String], $type: Type, $expiration: Date) {\n  newTodo(title: $title, token: $token, milestones: $milestones, type: $type, expiration: $expiration) {\n    __typename\n    result {\n      __typename\n      ... on ResponseMessageField {\n        isSuccess\n        message\n      }\n    }\n  }\n}"
+
+  public var title: String?
+  public var token: String?
+  public var milestones: [String?]?
+  public var type: Type?
+  public var expiration: String?
+
+  public init(title: String? = nil, token: String? = nil, milestones: [String?]? = nil, type: Type? = nil, expiration: String? = nil) {
+    self.title = title
+    self.token = token
+    self.milestones = milestones
+    self.type = type
+    self.expiration = expiration
+  }
+
+  public var variables: GraphQLMap? {
+    return ["title": title, "token": token, "milestones": milestones, "type": type, "expiration": expiration]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Mutation"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("newTodo", arguments: ["title": GraphQLVariable("title"), "token": GraphQLVariable("token"), "milestones": GraphQLVariable("milestones"), "type": GraphQLVariable("type"), "expiration": GraphQLVariable("expiration")], type: .object(NewTodo.selections)),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(newTodo: NewTodo? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "newTodo": newTodo.flatMap { (value: NewTodo) -> ResultMap in value.resultMap }])
+    }
+
+    public var newTodo: NewTodo? {
+      get {
+        return (resultMap["newTodo"] as? ResultMap).flatMap { NewTodo(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "newTodo")
+      }
+    }
+
+    public struct NewTodo: GraphQLSelectionSet {
+      public static let possibleTypes = ["NewToDoMutation"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("result", type: .object(Result.selections)),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(result: Result? = nil) {
+        self.init(unsafeResultMap: ["__typename": "NewToDoMutation", "result": result.flatMap { (value: Result) -> ResultMap in value.resultMap }])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var result: Result? {
+        get {
+          return (resultMap["result"] as? ResultMap).flatMap { Result(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "result")
+        }
+      }
+
+      public struct Result: GraphQLSelectionSet {
+        public static let possibleTypes = ["ResponseMessageField", "AuthInfoField"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLTypeCase(
+            variants: ["ResponseMessageField": AsResponseMessageField.selections],
+            default: [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            ]
+          )
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public static func makeAuthInfoField() -> Result {
+          return Result(unsafeResultMap: ["__typename": "AuthInfoField"])
+        }
+
+        public static func makeResponseMessageField(isSuccess: Bool? = nil, message: String? = nil) -> Result {
+          return Result(unsafeResultMap: ["__typename": "ResponseMessageField", "isSuccess": isSuccess, "message": message])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var asResponseMessageField: AsResponseMessageField? {
+          get {
+            if !AsResponseMessageField.possibleTypes.contains(__typename) { return nil }
+            return AsResponseMessageField(unsafeResultMap: resultMap)
+          }
+          set {
+            guard let newValue = newValue else { return }
+            resultMap = newValue.resultMap
+          }
+        }
+
+        public struct AsResponseMessageField: GraphQLSelectionSet {
+          public static let possibleTypes = ["ResponseMessageField"]
+
+          public static let selections: [GraphQLSelection] = [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("isSuccess", type: .scalar(Bool.self)),
+            GraphQLField("message", type: .scalar(String.self)),
+          ]
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(isSuccess: Bool? = nil, message: String? = nil) {
+            self.init(unsafeResultMap: ["__typename": "ResponseMessageField", "isSuccess": isSuccess, "message": message])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var isSuccess: Bool? {
+            get {
+              return resultMap["isSuccess"] as? Bool
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "isSuccess")
+            }
+          }
+
+          public var message: String? {
+            get {
+              return resultMap["message"] as? String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "message")
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 public final class AuthMutation: GraphQLMutation {
   public let operationDefinition =
     "mutation Auth($password: String, $email: String) {\n  auth(password: $password, email: $email) {\n    __typename\n    ... on AuthMutation {\n      result {\n        __typename\n        ... on AuthField {\n          accessToken\n          refreshToken\n          message\n        }\n      }\n    }\n  }\n}"

@@ -14,6 +14,7 @@ class TodoSelectCategoryVC : UIViewController {
     @IBOutlet weak var CategoryPickerView: UIPickerView!
     
     let categorys = ["IT","Life","Food"]
+    var currentItem = ""
 
     
     override func viewDidLoad() {
@@ -39,13 +40,18 @@ extension TodoSelectCategoryVC : UIPickerViewDelegate, UIPickerViewDataSource{
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
+        currentItem = categorys[row]
     }
     
     @objc func goNext(){
-        let selectMode = self.storyboard?.instantiateViewController(withIdentifier: "TodoSelectMode")
-        
-        self.navigationController?.pushViewController(selectMode!, animated: true)
+       self.performSegue(withIdentifier: "toSelectMode", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toSelectMode" {
+            let SelectMode = segue.destination as! TodoSelectModeVC
+            SelectMode.category = currentItem
+        }
     }
     
 }

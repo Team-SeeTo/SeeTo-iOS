@@ -171,6 +171,7 @@
                     </view>
                     <connections>
                         <outlet property="CategoryPickerView" destination="ohb-Tj-0Os" id="m4s-dp-cQq"/>
+                        <segue destination="ybI-ru-8M5" kind="show" identifier="toSelectMode" id="XM4-2o-nGA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="shv-Jv-Tv2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -213,6 +214,7 @@
                     </view>
                     <connections>
                         <outlet property="pickerview" destination="0uI-tO-pqS" id="8I0-cW-lCJ"/>
+                        <segue destination="OUP-1J-3U3" kind="show" identifier="toSelectDate" id="BzV-TR-KTS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Zv-zm-DN1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -247,6 +249,7 @@
                     </view>
                     <connections>
                         <outlet property="DatePicker" destination="MUw-OZ-FNE" id="5Tx-gf-jur"/>
+                        <segue destination="qLd-XF-sqO" kind="show" identifier="toWriteTodo" id="v4g-az-9cw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K96-4Y-C4k" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -311,7 +314,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="63e-le-nGB">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="63e-le-nGB">
                                 <rect key="frame" x="47.666666666666657" y="213" width="280" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -327,28 +330,30 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dap-sz-BPK" customClass="FabShape" customModule="SeeTo_IOS" customModuleProvider="target">
-                                <rect key="frame" x="339" y="281" width="20" height="20"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dap-sz-BPK" customClass="FabShape" customModule="SeeTo_IOS" customModuleProvider="target">
+                                <rect key="frame" x="338.66666666666669" y="249" width="20" height="20"/>
                                 <color key="backgroundColor" red="0.76639676089999997" green="0.63533860450000001" blue="0.98042803999999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="mfe-0h-ZGb"/>
                                     <constraint firstAttribute="width" constant="20" id="uxm-1j-b3V"/>
                                 </constraints>
                                 <state key="normal" image="ic_add_white.png"/>
+                                <connections>
+                                    <action selector="TodoAddBtn:" destination="qLd-XF-sqO" eventType="touchUpInside" id="81G-cM-tE8"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="kao-Kx-d9J" firstAttribute="trailing" secondItem="dap-sz-BPK" secondAttribute="trailing" constant="16" id="9JK-7g-Ibp"/>
+                            <constraint firstItem="dap-sz-BPK" firstAttribute="leading" secondItem="63e-le-nGB" secondAttribute="trailing" constant="11.33" id="Btx-aJ-uQY"/>
                             <constraint firstItem="ZPX-9u-WZw" firstAttribute="top" secondItem="63e-le-nGB" secondAttribute="bottom" constant="28" id="IIG-cL-jpf"/>
-                            <constraint firstItem="dap-sz-BPK" firstAttribute="leading" secondItem="ZPX-9u-WZw" secondAttribute="trailing" constant="17.329999999999998" id="L0T-Vw-H4R"/>
-                            <constraint firstItem="kao-Kx-d9J" firstAttribute="bottom" secondItem="dap-sz-BPK" secondAttribute="bottom" constant="492" id="Lae-FW-hrK"/>
+                            <constraint firstItem="dap-sz-BPK" firstAttribute="top" secondItem="kao-Kx-d9J" secondAttribute="top" constant="205" id="IoO-Ch-Lj6"/>
+                            <constraint firstItem="kao-Kx-d9J" firstAttribute="bottom" secondItem="dap-sz-BPK" secondAttribute="bottom" constant="509" id="JuZ-lE-aRX"/>
                             <constraint firstItem="ZPX-9u-WZw" firstAttribute="leading" secondItem="kao-Kx-d9J" secondAttribute="leading" constant="41.670000000000002" id="MYZ-T0-qXu"/>
                             <constraint firstItem="63e-le-nGB" firstAttribute="centerX" secondItem="J4d-vW-4Xs" secondAttribute="centerX" id="R9i-Tw-zzO"/>
                             <constraint firstItem="ZPr-Di-3yS" firstAttribute="centerX" secondItem="J4d-vW-4Xs" secondAttribute="centerX" id="gcX-o9-gZl"/>
                             <constraint firstItem="ZPX-9u-WZw" firstAttribute="bottom" secondItem="kao-Kx-d9J" secondAttribute="bottom" id="ka4-9I-4zM"/>
                             <constraint firstItem="ZPr-Di-3yS" firstAttribute="top" secondItem="kao-Kx-d9J" secondAttribute="top" constant="73" id="v3U-h8-J4Q"/>
-                            <constraint firstItem="dap-sz-BPK" firstAttribute="top" secondItem="kao-Kx-d9J" secondAttribute="top" constant="222" id="vDQ-3D-4iW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kao-Kx-d9J"/>
                     </view>
