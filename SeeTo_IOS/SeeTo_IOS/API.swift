@@ -459,6 +459,302 @@ public final class NewIdeaMutation: GraphQLMutation {
   }
 }
 
+public final class TimelineMainQuery: GraphQLQuery {
+  public let operationDefinition =
+    "query timelineMain($token: String, $date: Date) {\n  timeline(token: $token, date: $date) {\n    __typename\n    ... on TimeLineField {\n      todo {\n        __typename\n        ... on ToDoReviewField {\n          newCreate\n          todoComplete\n          totalPoint\n          milestoneComplete\n        }\n      }\n      ideas {\n        __typename\n        ... on IdeasReviewField {\n          newVote\n          newComment\n          newCreate\n          totalPoint\n        }\n      }\n      date\n      totalPoint\n    }\n  }\n}"
+
+  public var token: String?
+  public var date: String?
+
+  public init(token: String? = nil, date: String? = nil) {
+    self.token = token
+    self.date = date
+  }
+
+  public var variables: GraphQLMap? {
+    return ["token": token, "date": date]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Query"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("timeline", arguments: ["token": GraphQLVariable("token"), "date": GraphQLVariable("date")], type: .object(Timeline.selections)),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(timeline: Timeline? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Query", "timeline": timeline.flatMap { (value: Timeline) -> ResultMap in value.resultMap }])
+    }
+
+    public var timeline: Timeline? {
+      get {
+        return (resultMap["timeline"] as? ResultMap).flatMap { Timeline(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "timeline")
+      }
+    }
+
+    public struct Timeline: GraphQLSelectionSet {
+      public static let possibleTypes = ["ResponseMessageField", "AuthInfoField", "TimeLineField"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLTypeCase(
+          variants: ["TimeLineField": AsTimeLineField.selections],
+          default: [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          ]
+        )
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public static func makeResponseMessageField() -> Timeline {
+        return Timeline(unsafeResultMap: ["__typename": "ResponseMessageField"])
+      }
+
+      public static func makeAuthInfoField() -> Timeline {
+        return Timeline(unsafeResultMap: ["__typename": "AuthInfoField"])
+      }
+
+      public static func makeTimeLineField(todo: AsTimeLineField.Todo? = nil, ideas: AsTimeLineField.Idea? = nil, date: String? = nil, totalPoint: Int? = nil) -> Timeline {
+        return Timeline(unsafeResultMap: ["__typename": "TimeLineField", "todo": todo.flatMap { (value: AsTimeLineField.Todo) -> ResultMap in value.resultMap }, "ideas": ideas.flatMap { (value: AsTimeLineField.Idea) -> ResultMap in value.resultMap }, "date": date, "totalPoint": totalPoint])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var asTimeLineField: AsTimeLineField? {
+        get {
+          if !AsTimeLineField.possibleTypes.contains(__typename) { return nil }
+          return AsTimeLineField(unsafeResultMap: resultMap)
+        }
+        set {
+          guard let newValue = newValue else { return }
+          resultMap = newValue.resultMap
+        }
+      }
+
+      public struct AsTimeLineField: GraphQLSelectionSet {
+        public static let possibleTypes = ["TimeLineField"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("todo", type: .object(Todo.selections)),
+          GraphQLField("ideas", type: .object(Idea.selections)),
+          GraphQLField("date", type: .scalar(String.self)),
+          GraphQLField("totalPoint", type: .scalar(Int.self)),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(todo: Todo? = nil, ideas: Idea? = nil, date: String? = nil, totalPoint: Int? = nil) {
+          self.init(unsafeResultMap: ["__typename": "TimeLineField", "todo": todo.flatMap { (value: Todo) -> ResultMap in value.resultMap }, "ideas": ideas.flatMap { (value: Idea) -> ResultMap in value.resultMap }, "date": date, "totalPoint": totalPoint])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var todo: Todo? {
+          get {
+            return (resultMap["todo"] as? ResultMap).flatMap { Todo(unsafeResultMap: $0) }
+          }
+          set {
+            resultMap.updateValue(newValue?.resultMap, forKey: "todo")
+          }
+        }
+
+        public var ideas: Idea? {
+          get {
+            return (resultMap["ideas"] as? ResultMap).flatMap { Idea(unsafeResultMap: $0) }
+          }
+          set {
+            resultMap.updateValue(newValue?.resultMap, forKey: "ideas")
+          }
+        }
+
+        public var date: String? {
+          get {
+            return resultMap["date"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "date")
+          }
+        }
+
+        public var totalPoint: Int? {
+          get {
+            return resultMap["totalPoint"] as? Int
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "totalPoint")
+          }
+        }
+
+        public struct Todo: GraphQLSelectionSet {
+          public static let possibleTypes = ["ToDoReviewField"]
+
+          public static let selections: [GraphQLSelection] = [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("newCreate", type: .scalar(Int.self)),
+            GraphQLField("todoComplete", type: .scalar(Int.self)),
+            GraphQLField("totalPoint", type: .scalar(Int.self)),
+            GraphQLField("milestoneComplete", type: .scalar(Int.self)),
+          ]
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(newCreate: Int? = nil, todoComplete: Int? = nil, totalPoint: Int? = nil, milestoneComplete: Int? = nil) {
+            self.init(unsafeResultMap: ["__typename": "ToDoReviewField", "newCreate": newCreate, "todoComplete": todoComplete, "totalPoint": totalPoint, "milestoneComplete": milestoneComplete])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var newCreate: Int? {
+            get {
+              return resultMap["newCreate"] as? Int
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "newCreate")
+            }
+          }
+
+          public var todoComplete: Int? {
+            get {
+              return resultMap["todoComplete"] as? Int
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "todoComplete")
+            }
+          }
+
+          public var totalPoint: Int? {
+            get {
+              return resultMap["totalPoint"] as? Int
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "totalPoint")
+            }
+          }
+
+          public var milestoneComplete: Int? {
+            get {
+              return resultMap["milestoneComplete"] as? Int
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "milestoneComplete")
+            }
+          }
+        }
+
+        public struct Idea: GraphQLSelectionSet {
+          public static let possibleTypes = ["IdeasReviewField"]
+
+          public static let selections: [GraphQLSelection] = [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("newVote", type: .scalar(Int.self)),
+            GraphQLField("newComment", type: .scalar(Int.self)),
+            GraphQLField("newCreate", type: .scalar(Int.self)),
+            GraphQLField("totalPoint", type: .scalar(Int.self)),
+          ]
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(newVote: Int? = nil, newComment: Int? = nil, newCreate: Int? = nil, totalPoint: Int? = nil) {
+            self.init(unsafeResultMap: ["__typename": "IdeasReviewField", "newVote": newVote, "newComment": newComment, "newCreate": newCreate, "totalPoint": totalPoint])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var newVote: Int? {
+            get {
+              return resultMap["newVote"] as? Int
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "newVote")
+            }
+          }
+
+          public var newComment: Int? {
+            get {
+              return resultMap["newComment"] as? Int
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "newComment")
+            }
+          }
+
+          public var newCreate: Int? {
+            get {
+              return resultMap["newCreate"] as? Int
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "newCreate")
+            }
+          }
+
+          public var totalPoint: Int? {
+            get {
+              return resultMap["totalPoint"] as? Int
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "totalPoint")
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 public final class SimpleProfileQuery: GraphQLQuery {
   public let operationDefinition =
     "query simpleProfile($token: String) {\n  profile(token: $token) {\n    __typename\n    ... on ProfileField {\n      imgPath\n      email\n      username\n      rank\n      point\n      registerOn\n    }\n  }\n}"
@@ -804,6 +1100,312 @@ public final class RefreshMutation: GraphQLMutation {
             }
             set {
               resultMap.updateValue(newValue, forKey: "message")
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+public final class IdeasMainQuery: GraphQLQuery {
+  public let operationDefinition =
+    "query ideasMain($token: String, $page: Int) {\n  ideas(token: $token, startRank: $page) {\n    __typename\n    ... on IdeasField {\n      id\n      author\n      title\n      body\n      createdAt\n      category\n      voteChecked\n      comments {\n        __typename\n        commentCount\n        comments {\n          __typename\n          author\n          body\n        }\n      }\n      upvoter\n    }\n  }\n}"
+
+  public var token: String?
+  public var page: Int?
+
+  public init(token: String? = nil, page: Int? = nil) {
+    self.token = token
+    self.page = page
+  }
+
+  public var variables: GraphQLMap? {
+    return ["token": token, "page": page]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Query"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("ideas", arguments: ["token": GraphQLVariable("token"), "startRank": GraphQLVariable("page")], type: .list(.object(Idea.selections))),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(ideas: [Idea?]? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Query", "ideas": ideas.flatMap { (value: [Idea?]) -> [ResultMap?] in value.map { (value: Idea?) -> ResultMap? in value.flatMap { (value: Idea) -> ResultMap in value.resultMap } } }])
+    }
+
+    public var ideas: [Idea?]? {
+      get {
+        return (resultMap["ideas"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Idea?] in value.map { (value: ResultMap?) -> Idea? in value.flatMap { (value: ResultMap) -> Idea in Idea(unsafeResultMap: value) } } }
+      }
+      set {
+        resultMap.updateValue(newValue.flatMap { (value: [Idea?]) -> [ResultMap?] in value.map { (value: Idea?) -> ResultMap? in value.flatMap { (value: Idea) -> ResultMap in value.resultMap } } }, forKey: "ideas")
+      }
+    }
+
+    public struct Idea: GraphQLSelectionSet {
+      public static let possibleTypes = ["ResponseMessageField", "AuthInfoField", "IdeasField"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLTypeCase(
+          variants: ["IdeasField": AsIdeasField.selections],
+          default: [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          ]
+        )
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public static func makeResponseMessageField() -> Idea {
+        return Idea(unsafeResultMap: ["__typename": "ResponseMessageField"])
+      }
+
+      public static func makeAuthInfoField() -> Idea {
+        return Idea(unsafeResultMap: ["__typename": "AuthInfoField"])
+      }
+
+      public static func makeIdeasField(id: String? = nil, author: String? = nil, title: String? = nil, body: String? = nil, createdAt: String? = nil, category: String? = nil, voteChecked: Bool? = nil, comments: AsIdeasField.Comment? = nil, upvoter: Int? = nil) -> Idea {
+        return Idea(unsafeResultMap: ["__typename": "IdeasField", "id": id, "author": author, "title": title, "body": body, "createdAt": createdAt, "category": category, "voteChecked": voteChecked, "comments": comments.flatMap { (value: AsIdeasField.Comment) -> ResultMap in value.resultMap }, "upvoter": upvoter])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var asIdeasField: AsIdeasField? {
+        get {
+          if !AsIdeasField.possibleTypes.contains(__typename) { return nil }
+          return AsIdeasField(unsafeResultMap: resultMap)
+        }
+        set {
+          guard let newValue = newValue else { return }
+          resultMap = newValue.resultMap
+        }
+      }
+
+      public struct AsIdeasField: GraphQLSelectionSet {
+        public static let possibleTypes = ["IdeasField"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .scalar(String.self)),
+          GraphQLField("author", type: .scalar(String.self)),
+          GraphQLField("title", type: .scalar(String.self)),
+          GraphQLField("body", type: .scalar(String.self)),
+          GraphQLField("createdAt", type: .scalar(String.self)),
+          GraphQLField("category", type: .scalar(String.self)),
+          GraphQLField("voteChecked", type: .scalar(Bool.self)),
+          GraphQLField("comments", type: .object(Comment.selections)),
+          GraphQLField("upvoter", type: .scalar(Int.self)),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(id: String? = nil, author: String? = nil, title: String? = nil, body: String? = nil, createdAt: String? = nil, category: String? = nil, voteChecked: Bool? = nil, comments: Comment? = nil, upvoter: Int? = nil) {
+          self.init(unsafeResultMap: ["__typename": "IdeasField", "id": id, "author": author, "title": title, "body": body, "createdAt": createdAt, "category": category, "voteChecked": voteChecked, "comments": comments.flatMap { (value: Comment) -> ResultMap in value.resultMap }, "upvoter": upvoter])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: String? {
+          get {
+            return resultMap["id"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        public var author: String? {
+          get {
+            return resultMap["author"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "author")
+          }
+        }
+
+        public var title: String? {
+          get {
+            return resultMap["title"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "title")
+          }
+        }
+
+        public var body: String? {
+          get {
+            return resultMap["body"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "body")
+          }
+        }
+
+        public var createdAt: String? {
+          get {
+            return resultMap["createdAt"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "createdAt")
+          }
+        }
+
+        public var category: String? {
+          get {
+            return resultMap["category"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "category")
+          }
+        }
+
+        public var voteChecked: Bool? {
+          get {
+            return resultMap["voteChecked"] as? Bool
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "voteChecked")
+          }
+        }
+
+        public var comments: Comment? {
+          get {
+            return (resultMap["comments"] as? ResultMap).flatMap { Comment(unsafeResultMap: $0) }
+          }
+          set {
+            resultMap.updateValue(newValue?.resultMap, forKey: "comments")
+          }
+        }
+
+        public var upvoter: Int? {
+          get {
+            return resultMap["upvoter"] as? Int
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "upvoter")
+          }
+        }
+
+        public struct Comment: GraphQLSelectionSet {
+          public static let possibleTypes = ["CommentResultField"]
+
+          public static let selections: [GraphQLSelection] = [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("commentCount", type: .scalar(Int.self)),
+            GraphQLField("comments", type: .list(.object(Comment.selections))),
+          ]
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(commentCount: Int? = nil, comments: [Comment?]? = nil) {
+            self.init(unsafeResultMap: ["__typename": "CommentResultField", "commentCount": commentCount, "comments": comments.flatMap { (value: [Comment?]) -> [ResultMap?] in value.map { (value: Comment?) -> ResultMap? in value.flatMap { (value: Comment) -> ResultMap in value.resultMap } } }])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var commentCount: Int? {
+            get {
+              return resultMap["commentCount"] as? Int
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "commentCount")
+            }
+          }
+
+          public var comments: [Comment?]? {
+            get {
+              return (resultMap["comments"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Comment?] in value.map { (value: ResultMap?) -> Comment? in value.flatMap { (value: ResultMap) -> Comment in Comment(unsafeResultMap: value) } } }
+            }
+            set {
+              resultMap.updateValue(newValue.flatMap { (value: [Comment?]) -> [ResultMap?] in value.map { (value: Comment?) -> ResultMap? in value.flatMap { (value: Comment) -> ResultMap in value.resultMap } } }, forKey: "comments")
+            }
+          }
+
+          public struct Comment: GraphQLSelectionSet {
+            public static let possibleTypes = ["CommentField"]
+
+            public static let selections: [GraphQLSelection] = [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("author", type: .scalar(String.self)),
+              GraphQLField("body", type: .scalar(String.self)),
+            ]
+
+            public private(set) var resultMap: ResultMap
+
+            public init(unsafeResultMap: ResultMap) {
+              self.resultMap = unsafeResultMap
+            }
+
+            public init(author: String? = nil, body: String? = nil) {
+              self.init(unsafeResultMap: ["__typename": "CommentField", "author": author, "body": body])
+            }
+
+            public var __typename: String {
+              get {
+                return resultMap["__typename"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "__typename")
+              }
+            }
+
+            public var author: String? {
+              get {
+                return resultMap["author"] as? String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "author")
+              }
+            }
+
+            public var body: String? {
+              get {
+                return resultMap["body"] as? String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "body")
+              }
             }
           }
         }

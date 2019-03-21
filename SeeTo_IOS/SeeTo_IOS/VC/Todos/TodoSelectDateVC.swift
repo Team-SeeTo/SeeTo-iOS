@@ -20,6 +20,7 @@ class TodoSelectDateVC : UIViewController {
 
 extension TodoSelectDateVC {
     @objc func goNext() {
-        
+        let TodoEditVC = self.storyboard?.instantiateViewController(withIdentifier: "TodoEditVC")
+        self.navigationController?.pushViewController(TodoEditVC!, animated: true)
     }
 }

@@ -17,8 +17,8 @@ class IdeasWriteContentVC : UIViewController {
     var category = ""
     
     override func viewDidLoad() {
-        Ideas_content.placeholder = "contents here"
-        Ideas_content.placeholderColor = UIColor.gray
+//        Ideas_content.placeholder = "contents here"
+//        Ideas_content.placeholderColor = UIColor.gray
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "finish", style: .plain, target: self, action: #selector(IdeasWriteContentVC.goNext))
     }

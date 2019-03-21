@@ -1,0 +1,25 @@
+query timelineMain($token:String, $date : Date){
+timeline(token:$token, date:$date){
+...on TimeLineField{
+todo{
+...on ToDoReviewField{
+newCreate
+todoComplete
+totalPoint
+milestoneComplete
+}
+}
+ideas{
+...on IdeasReviewField{
+newVote
+newComment
+newCreate
+totalPoint
+}
+}
+
+date
+totalPoint
+}
+}
+}
