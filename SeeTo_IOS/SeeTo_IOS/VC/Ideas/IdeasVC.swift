@@ -15,10 +15,11 @@ import RxCocoa
 
 class IdeasVC : UIViewController, IndicatorInfoProvider {
     @IBOutlet weak var tableview: UITableView!
-    var title_array = [""]
-    var category_array = [""]
-    var commentCount_array = [0]
-    var likeCount_array = [0]
+    var title_array : [String] = []
+    var category_array : [String] = []
+    var commentCount_array : [Int] = []
+    var likeCount_array : [Int] = []
+    var rank_array : [Int] = []
     
     override func viewDidLoad() {
         tableview.dataSource = self
@@ -47,6 +48,7 @@ extension IdeasVC : UITableViewDataSource, UITableViewDelegate{
                         self?.category_array.append( res.ideas?[i]?.asIdeasField?.category ?? "nil")
                         self?.commentCount_array.append(res.ideas?[i]?.asIdeasField?.comments?.commentCount ?? 0)
                         self?.likeCount_array.append(res.ideas?[i]?.asIdeasField?.upvoter ?? 0)
+                        self?.rank_array.append(i + 1)
                         
                         self?.tableview.reloadData()
                     }
@@ -66,6 +68,7 @@ extension IdeasVC : UITableViewDataSource, UITableViewDelegate{
         cell.Category.text = category_array[indexPath.row]
         cell.like_total.text = "\(likeCount_array[indexPath.row])"
         cell.comment_total.text = "\(commentCount_array[indexPath.row])"
+        cell.rank.text = "#\(rank_array[indexPath.row])"
         
         cell.selectionStyle = .none
 

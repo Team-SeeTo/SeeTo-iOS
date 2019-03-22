@@ -32,14 +32,12 @@ class TimeLineVC : UIViewController , IndicatorInfoProvider {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         dateString = dateFormatter.string(from: date)
         getTimeLineData(date: dateString)
-        self.tableview.reloadData()
     }
     
     override func viewDidLoad() {
         tableview.dataSource = self
         tableview.delegate = self
         tableview.isScrollEnabled = false
-        self.tableview.reloadData()
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
@@ -53,27 +51,21 @@ extension TimeLineVC : UITableViewDelegate, UITableViewDataSource{
             .subscribe(onNext: { [weak self] res in
                 if(res.timeline == nil) {self!.showToast(msg: "Timeline 불러오기 실패")}
                 else {
-                    print("faster networking")
-                    print("fdsa \(String(describing: res.timeline?.asTimeLineField?.ideas?.newCreate))")
+                    self!.firstNum_array.insert(res.timeline?.asTimeLineField?.todo?.milestoneComplete ?? 0,at: 0)
+                    self!.firstNum_array.insert(res.timeline?.asTimeLineField?.ideas?.newVote ?? 0,at: 1)
                     
-                    self!.firstNum_array.append(res.timeline?.asTimeLineField?.todo?.milestoneComplete ?? 0)
-                    self!.firstNum_array.append(res.timeline?.asTimeLineField?.ideas?.newVote ?? 0)
+                    self!.secondNum_array.insert(res.timeline?.asTimeLineField?.todo?.todoComplete ?? 0,at: 0)
+                    self!.secondNum_array.insert(res.timeline?.asTimeLineField?.ideas?.newComment ?? 0,at: 1)
                     
-                    self!.secondNum_array.append(res.timeline?.asTimeLineField?.todo?.todoComplete ?? 0)
-                    self!.secondNum_array.append(res.timeline?.asTimeLineField?.ideas?.newComment ?? 0)
+                    self!.thirdNum_array.insert(res.timeline?.asTimeLineField?.todo?.newCreate ?? 0,at: 0)
+                    self!.thirdNum_array.insert(res.timeline?.asTimeLineField?.ideas?.newCreate ?? 0,at: 1)
                     
-                    self!.thirdNum_array.append(res.timeline?.asTimeLineField?.todo?.newCreate ?? 0)
-                    self!.thirdNum_array.append(res.timeline?.asTimeLineField?.ideas?.newCreate ?? 0)
-                    
-                    self!.totalNum_array.append(res.timeline?.asTimeLineField?.ideas?.totalPoint ?? 0)
-                    self!.totalNum_array.append(res.timeline?.asTimeLineField?.todo?.totalPoint ?? 0)
-                    
-                    self?.totalNum_array.forEach { print("totalnum \($0)") }
+                    self!.totalNum_array.insert(res.timeline?.asTimeLineField?.todo?.totalPoint ?? 0,at: 0)
+                    self!.totalNum_array.insert(res.timeline?.asTimeLineField?.ideas?.totalPoint ?? 0,at: 1)
                     
                     self!.tableview.reloadData()
                 }
             })
-        self.tableview.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -81,9 +73,7 @@ extension TimeLineVC : UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        print("faster tableview")
-        
+                
         let cell = tableview.dequeueReusableCell(withIdentifier: "TLCell", for: indexPath as IndexPath) as! TimeLineCell
         
         cell.Title.text = title_array[indexPath.row]

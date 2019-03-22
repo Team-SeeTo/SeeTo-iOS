@@ -80,7 +80,11 @@
                                                     <rect key="frame" x="176.66666666666663" y="11" width="178.33333333333337" height="35"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1st" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="utA-jv-poC">
-                                                            <rect key="frame" x="7.9999999999999982" y="8" width="25.333333333333329" height="24"/>
+                                                            <rect key="frame" x="8" y="8" width="81" height="24"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="24" id="XRy-zi-dcA"/>
+                                                                <constraint firstAttribute="width" constant="81" id="uzo-ie-UFq"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -88,10 +92,10 @@
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.84819293019999997" green="0.75585794449999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="utA-jv-poC" secondAttribute="bottom" constant="3" id="6QO-zs-LzC"/>
-                                                        <constraint firstItem="utA-jv-poC" firstAttribute="leading" secondItem="eAf-ql-vAp" secondAttribute="leading" constant="8" id="IOD-Qj-OPy"/>
-                                                        <constraint firstItem="utA-jv-poC" firstAttribute="top" secondItem="eAf-ql-vAp" secondAttribute="top" constant="8" id="WfW-SM-ekH"/>
-                                                        <constraint firstAttribute="trailing" secondItem="utA-jv-poC" secondAttribute="trailing" constant="145" id="raE-Pb-kVv"/>
+                                                        <constraint firstItem="utA-jv-poC" firstAttribute="leading" secondItem="eAf-ql-vAp" secondAttribute="leading" constant="8" id="GEc-Ze-3FJ"/>
+                                                        <constraint firstAttribute="bottom" secondItem="utA-jv-poC" secondAttribute="bottom" constant="3" id="Iea-RI-lid"/>
+                                                        <constraint firstAttribute="trailing" secondItem="utA-jv-poC" secondAttribute="trailing" constant="89.329999999999998" id="PMB-7T-1gI"/>
+                                                        <constraint firstItem="utA-jv-poC" firstAttribute="top" secondItem="eAf-ql-vAp" secondAttribute="top" constant="8" id="hXC-Ly-ZZK"/>
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="411" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Djh-fX-hRu">
