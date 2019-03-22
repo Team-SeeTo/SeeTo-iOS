@@ -12,7 +12,7 @@ import UIKit
 class TodoSelectModeVC : UIViewController {
     @IBOutlet weak var pickerview: UIPickerView!
     
-    let modes = ["Standard","Hard","Infinity"]
+    let modes = ["STANDARD","HARD","INFINITY"]
     var currentItem = ""
     var category = ""
     

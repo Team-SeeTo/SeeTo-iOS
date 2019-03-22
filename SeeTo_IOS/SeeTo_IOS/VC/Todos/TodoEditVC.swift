@@ -18,6 +18,7 @@ class TodoEditVC : UIViewController {
     var mode = ""
     var date = ""
    
+    
     @IBAction func TodoAddBtn(_ sender: Any) {
         let alert = UIAlertController(title: "New Todo", message: "Add your New Todo. ", preferredStyle: .alert)
         alert.addTextField { (UITextField) in
@@ -42,7 +43,7 @@ class TodoEditVC : UIViewController {
     override func viewDidLoad() {
         TodoTableView.delegate = self
         TodoTableView.dataSource = self
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Finish", style: .plain, target: self, action: #selector(goFinish))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Finish", style: .plain, target: self, action: #selector(TodoEditVC.goFinish))
     }
 }
 
@@ -69,10 +70,31 @@ extension TodoEditVC : UITableViewDelegate,UITableViewDataSource {
     }
     
     @objc func goFinish(){
-        
+//        NewTodoRequest()
+        print("ㅂㅈㄷㄱ\(String(describing: Type(rawValue: mode)))")
+
+        print("ㅂㅈㄷㄱ")
     }
     
     func NewTodoRequest(){
-        
+
+        _ = apollo.rx.perform(mutation: NewTodoMutation(title: TodoTitle.text, token: UserDefaults.standard.value(forKey: "accessToken") as? String, milestones: todolist, type: Type.standard, expiration: date))
+            .subscribe(onNext: { [weak self] res in
+                print("ㅂㅈㄷㄱ\(String(describing: res.newTodo?.result?.asResponseMessageField?.isSuccess))")
+                print("ㅂㅈㄷㄱ\(res)")
+                if (res.newTodo?.result == nil){
+                    self?.showToast(msg: "새로운 Todo 추가에 실패하였습니다.")
+                } else {
+                    print("ㅂㅈㄷㄱ\(String(describing: res.newTodo?.result?.asResponseMessageField?.isSuccess))")
+                    let alert = UIAlertController(title: "Todo 작성", message: "Todo 작성이 완료되었습니다.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default , handler: { _ in
+                        self?.navigationController?.popToRootViewController(animated: true)
+
+                    }))
+                    
+                    self?.present(alert, animated: true, completion: nil)
+                }
+            })
     }
+
 }
