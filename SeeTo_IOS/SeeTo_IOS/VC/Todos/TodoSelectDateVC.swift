@@ -12,12 +12,19 @@ import UIKit
 class TodoSelectDateVC : UIViewController {
    
     @IBOutlet weak var DatePicker: UIDatePicker!
+   
+    let date = Date()
+    let dateFormatter = DateFormatter()
     var dateString = ""
     var category = ""
     var Mode = ""
     
     override func viewDidLoad() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "next", style: .plain, target: self, action: #selector(TodoSelectDateVC.goNext))
+        
+        dateFormatter.dateStyle = .medium
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateString = dateFormatter.string(from: date)
         
         DatePicker.addTarget(self, action: #selector(TodoSelectDateVC.DateChanged), for: .valueChanged)
     }
@@ -29,9 +36,6 @@ extension TodoSelectDateVC {
     }
     
     @objc func DateChanged(){
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.dateFormat = "yyyy-MM-dd"
         dateString = dateFormatter.string(from: DatePicker.date)
     }
     

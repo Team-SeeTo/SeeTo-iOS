@@ -19,7 +19,7 @@ class TodoSelectModeVC : UIViewController {
     override func viewDidLoad() {
         pickerview.dataSource = self
         pickerview.delegate = self
-        
+        currentItem = "STANDARD"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "next", style: .plain, target: self, action: #selector(TodoSelectModeVC.goNext))
         
     }
@@ -42,7 +42,7 @@ UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-    
+        currentItem = modes[row]
     }
     
     @objc func goNext(){

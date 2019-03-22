@@ -40,6 +40,255 @@ public enum Type: RawRepresentable, Equatable, Hashable, Apollo.JSONDecodable, A
   }
 }
 
+public final class TodoMainQuery: GraphQLQuery {
+  public let operationDefinition =
+    "query TodoMain($token: String, $orderBy: String) {\n  todo(token: $token, orderBy: $orderBy) {\n    __typename\n    ... on ToDoField {\n      title\n      type\n      createdAt\n      id\n      milestones {\n        __typename\n        id\n        name\n        isCompleted\n      }\n      expiration\n      isCompleted\n    }\n  }\n}"
+
+  public var token: String?
+  public var orderBy: String?
+
+  public init(token: String? = nil, orderBy: String? = nil) {
+    self.token = token
+    self.orderBy = orderBy
+  }
+
+  public var variables: GraphQLMap? {
+    return ["token": token, "orderBy": orderBy]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Query"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("todo", arguments: ["token": GraphQLVariable("token"), "orderBy": GraphQLVariable("orderBy")], type: .list(.object(Todo.selections))),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(todo: [Todo?]? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Query", "todo": todo.flatMap { (value: [Todo?]) -> [ResultMap?] in value.map { (value: Todo?) -> ResultMap? in value.flatMap { (value: Todo) -> ResultMap in value.resultMap } } }])
+    }
+
+    public var todo: [Todo?]? {
+      get {
+        return (resultMap["todo"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Todo?] in value.map { (value: ResultMap?) -> Todo? in value.flatMap { (value: ResultMap) -> Todo in Todo(unsafeResultMap: value) } } }
+      }
+      set {
+        resultMap.updateValue(newValue.flatMap { (value: [Todo?]) -> [ResultMap?] in value.map { (value: Todo?) -> ResultMap? in value.flatMap { (value: Todo) -> ResultMap in value.resultMap } } }, forKey: "todo")
+      }
+    }
+
+    public struct Todo: GraphQLSelectionSet {
+      public static let possibleTypes = ["ResponseMessageField", "AuthInfoField", "ToDoField"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLTypeCase(
+          variants: ["ToDoField": AsToDoField.selections],
+          default: [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          ]
+        )
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public static func makeResponseMessageField() -> Todo {
+        return Todo(unsafeResultMap: ["__typename": "ResponseMessageField"])
+      }
+
+      public static func makeAuthInfoField() -> Todo {
+        return Todo(unsafeResultMap: ["__typename": "AuthInfoField"])
+      }
+
+      public static func makeToDoField(title: String? = nil, type: String? = nil, createdAt: String? = nil, id: String? = nil, milestones: [AsToDoField.Milestone?]? = nil, expiration: String? = nil, isCompleted: Bool? = nil) -> Todo {
+        return Todo(unsafeResultMap: ["__typename": "ToDoField", "title": title, "type": type, "createdAt": createdAt, "id": id, "milestones": milestones.flatMap { (value: [AsToDoField.Milestone?]) -> [ResultMap?] in value.map { (value: AsToDoField.Milestone?) -> ResultMap? in value.flatMap { (value: AsToDoField.Milestone) -> ResultMap in value.resultMap } } }, "expiration": expiration, "isCompleted": isCompleted])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var asToDoField: AsToDoField? {
+        get {
+          if !AsToDoField.possibleTypes.contains(__typename) { return nil }
+          return AsToDoField(unsafeResultMap: resultMap)
+        }
+        set {
+          guard let newValue = newValue else { return }
+          resultMap = newValue.resultMap
+        }
+      }
+
+      public struct AsToDoField: GraphQLSelectionSet {
+        public static let possibleTypes = ["ToDoField"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("title", type: .scalar(String.self)),
+          GraphQLField("type", type: .scalar(String.self)),
+          GraphQLField("createdAt", type: .scalar(String.self)),
+          GraphQLField("id", type: .scalar(String.self)),
+          GraphQLField("milestones", type: .list(.object(Milestone.selections))),
+          GraphQLField("expiration", type: .scalar(String.self)),
+          GraphQLField("isCompleted", type: .scalar(Bool.self)),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(title: String? = nil, type: String? = nil, createdAt: String? = nil, id: String? = nil, milestones: [Milestone?]? = nil, expiration: String? = nil, isCompleted: Bool? = nil) {
+          self.init(unsafeResultMap: ["__typename": "ToDoField", "title": title, "type": type, "createdAt": createdAt, "id": id, "milestones": milestones.flatMap { (value: [Milestone?]) -> [ResultMap?] in value.map { (value: Milestone?) -> ResultMap? in value.flatMap { (value: Milestone) -> ResultMap in value.resultMap } } }, "expiration": expiration, "isCompleted": isCompleted])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var title: String? {
+          get {
+            return resultMap["title"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "title")
+          }
+        }
+
+        public var type: String? {
+          get {
+            return resultMap["type"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "type")
+          }
+        }
+
+        public var createdAt: String? {
+          get {
+            return resultMap["createdAt"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "createdAt")
+          }
+        }
+
+        public var id: String? {
+          get {
+            return resultMap["id"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        public var milestones: [Milestone?]? {
+          get {
+            return (resultMap["milestones"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Milestone?] in value.map { (value: ResultMap?) -> Milestone? in value.flatMap { (value: ResultMap) -> Milestone in Milestone(unsafeResultMap: value) } } }
+          }
+          set {
+            resultMap.updateValue(newValue.flatMap { (value: [Milestone?]) -> [ResultMap?] in value.map { (value: Milestone?) -> ResultMap? in value.flatMap { (value: Milestone) -> ResultMap in value.resultMap } } }, forKey: "milestones")
+          }
+        }
+
+        public var expiration: String? {
+          get {
+            return resultMap["expiration"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "expiration")
+          }
+        }
+
+        public var isCompleted: Bool? {
+          get {
+            return resultMap["isCompleted"] as? Bool
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "isCompleted")
+          }
+        }
+
+        public struct Milestone: GraphQLSelectionSet {
+          public static let possibleTypes = ["MilestoneField"]
+
+          public static let selections: [GraphQLSelection] = [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .scalar(String.self)),
+            GraphQLField("name", type: .scalar(String.self)),
+            GraphQLField("isCompleted", type: .scalar(Bool.self)),
+          ]
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(id: String? = nil, name: String? = nil, isCompleted: Bool? = nil) {
+            self.init(unsafeResultMap: ["__typename": "MilestoneField", "id": id, "name": name, "isCompleted": isCompleted])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var id: String? {
+            get {
+              return resultMap["id"] as? String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "id")
+            }
+          }
+
+          public var name: String? {
+            get {
+              return resultMap["name"] as? String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "name")
+            }
+          }
+
+          public var isCompleted: Bool? {
+            get {
+              return resultMap["isCompleted"] as? Bool
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "isCompleted")
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 public final class NewTodoMutation: GraphQLMutation {
   public let operationDefinition =
     "mutation NewTodo($title: String, $token: String, $milestones: [String], $type: Type, $expiration: Date) {\n  newTodo(title: $title, token: $token, milestones: $milestones, type: $type, expiration: $expiration) {\n    __typename\n    result {\n      __typename\n      ... on ResponseMessageField {\n        isSuccess\n        message\n      }\n    }\n  }\n}"

@@ -82,6 +82,7 @@
 		6847F376223092DA009239F4 /* MainMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6847F375223092DA009239F4 /* MainMenuCell.swift */; };
 		6847F3782230957A009239F4 /* MainMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6847F3772230957A009239F4 /* MainMenuVC.swift */; };
 		6847F37A22311FBB009239F4 /* MainMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6847F37922311FBB009239F4 /* MainMenu.storyboard */; };
+		688C05E42244BE4B00C9A53B /* todo_main.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 688C05E32244BE4B00C9A53B /* todo_main.graphql */; };
 		68D32CC9224339750042ED68 /* new_todo.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 68D32CC8224339750042ED68 /* new_todo.graphql */; };
 		68F43CE9222D1719003258A3 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F43CE8222D1719003258A3 /* Shape.swift */; };
 		68F43CED222D2FF0003258A3 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F43CEC222D2FF0003258A3 /* Colors.swift */; };
@@ -193,6 +194,7 @@
 		6847F375223092DA009239F4 /* MainMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuCell.swift; sourceTree = "<group>"; };
 		6847F3772230957A009239F4 /* MainMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuVC.swift; sourceTree = "<group>"; };
 		6847F37922311FBB009239F4 /* MainMenu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainMenu.storyboard; sourceTree = "<group>"; };
+		688C05E32244BE4B00C9A53B /* todo_main.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = todo_main.graphql; sourceTree = "<group>"; };
 		68D32CC8224339750042ED68 /* new_todo.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = new_todo.graphql; sourceTree = "<group>"; };
 		68F43CE8222D1719003258A3 /* Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
 		68F43CEC222D2FF0003258A3 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 				68457A6F2240B7E50026B087 /* ideas_main.graphql */,
 				683F5F482241BFFA00C1E467 /* timeline_main.graphql */,
 				68D32CC8224339750042ED68 /* new_todo.graphql */,
+				688C05E32244BE4B00C9A53B /* todo_main.graphql */,
 			);
 			path = GraphQL;
 			sourceTree = "<group>";
@@ -649,6 +652,7 @@
 			files = (
 				684246B7222FD7CB00D59363 /* ic_set_favorite.png in Resources */,
 				684246B8222FD7CB00D59363 /* ic_message.png in Resources */,
+				688C05E42244BE4B00C9A53B /* todo_main.graphql in Resources */,
 				683255AA2227F738001D4743 /* Login.storyboard in Resources */,
 				683BBC01222E56FD001F4F83 /* TimeLine.storyboard in Resources */,
 				68457A702240B7E50026B087 /* ideas_main.graphql in Resources */,
