@@ -70,7 +70,10 @@ extension TodoEditVC : UITableViewDelegate,UITableViewDataSource {
     }
     
     @objc func goFinish(){
-      
+      NewTodoRequest()
+    }
+    
+    func NewTodoRequest(){
         _ = apollo.rx.perform(mutation: NewTodoMutation(title: TodoTitle.text, token: UserDefaults.standard.value(forKey: "accessToken") as? String, milestones: todolist, type: Type(rawValue: mode ), expiration: date))
             .subscribe(onNext: { [weak self] res in
                 if (res.newTodo?.result == nil){
@@ -88,10 +91,6 @@ extension TodoEditVC : UITableViewDelegate,UITableViewDataSource {
                     }
                 }
             })
-    }
-    
-    func NewTodoRequest(){
-
     }
 
 }

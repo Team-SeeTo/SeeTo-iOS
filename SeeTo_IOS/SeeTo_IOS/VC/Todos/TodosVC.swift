@@ -19,8 +19,8 @@ class TodosVC: UIViewController, IndicatorInfoProvider{
     var milestonesID_array : [String] = []
     var milestonesIsChecked_array : [Bool] = []
     
+    
     override func viewWillAppear(_ animated: Bool) {
-        getTodoListData()
     }
     
     override func viewDidLoad() {
