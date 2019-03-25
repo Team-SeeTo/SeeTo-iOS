@@ -1578,25 +1578,27 @@ public final class RefreshMutation: GraphQLMutation {
 
 public final class IdeasMainQuery: GraphQLQuery {
   public let operationDefinition =
-    "query ideasMain($token: String, $page: Int) {\n  ideas(token: $token, startRank: $page) {\n    __typename\n    ... on IdeasField {\n      id\n      author\n      title\n      body\n      createdAt\n      category\n      voteChecked\n      comments {\n        __typename\n        commentCount\n        comments {\n          __typename\n          author\n          body\n        }\n      }\n      upvoter\n    }\n  }\n}"
+    "query ideasMain($token: String, $view: String, $page: Int) {\n  ideas(token: $token, view: $view, startRank: $page) {\n    __typename\n    ... on IdeasField {\n      id\n      author\n      title\n      body\n      createdAt\n      category\n      voteChecked\n      comments {\n        __typename\n        commentCount\n        comments {\n          __typename\n          author\n          body\n        }\n      }\n      upvoter\n    }\n  }\n}"
 
   public var token: String?
+  public var view: String?
   public var page: Int?
 
-  public init(token: String? = nil, page: Int? = nil) {
+  public init(token: String? = nil, view: String? = nil, page: Int? = nil) {
     self.token = token
+    self.view = view
     self.page = page
   }
 
   public var variables: GraphQLMap? {
-    return ["token": token, "page": page]
+    return ["token": token, "view": view, "page": page]
   }
 
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes = ["Query"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("ideas", arguments: ["token": GraphQLVariable("token"), "startRank": GraphQLVariable("page")], type: .list(.object(Idea.selections))),
+      GraphQLField("ideas", arguments: ["token": GraphQLVariable("token"), "view": GraphQLVariable("view"), "startRank": GraphQLVariable("page")], type: .list(.object(Idea.selections))),
     ]
 
     public private(set) var resultMap: ResultMap

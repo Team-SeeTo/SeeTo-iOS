@@ -20,6 +20,8 @@ class IdeasVC : UIViewController, IndicatorInfoProvider {
     var commentCount_array : [Int] = []
     var likeCount_array : [Int] = []
     var rank_array : [Int] = []
+    var id_array : [String] = []
+    var currentID = ""
     
     override func viewDidLoad() {
         tableview.dataSource = self
@@ -48,6 +50,7 @@ extension IdeasVC : UITableViewDataSource, UITableViewDelegate{
                         self?.category_array.append( res.ideas?[i]?.asIdeasField?.category ?? "nil")
                         self?.commentCount_array.append(res.ideas?[i]?.asIdeasField?.comments?.commentCount ?? 0)
                         self?.likeCount_array.append(res.ideas?[i]?.asIdeasField?.upvoter ?? 0)
+                        self?.id_array.append(res.ideas?[i]?.asIdeasField?.id ?? "nil")
                         self?.rank_array.append(i + 1)
                         
                         self?.tableview.reloadData()
@@ -85,10 +88,15 @@ extension IdeasVC : UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let IdeasDetail = self.storyboard?.instantiateViewController(withIdentifier: "IdeasDetail")
-        
-        self.navigationController?.pushViewController(IdeasDetail!, animated: true)
+        currentID = id_array[indexPath.row]
+        self.performSegue(withIdentifier: "toIdeasDetail", sender: nil)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toIdeasDetail" {
+            let IdeasDetail = segue.destination as! IdeasDetailVC
+            IdeasDetail.id = currentID
+        }
+    }
     
 }

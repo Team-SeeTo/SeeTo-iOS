@@ -1,5 +1,5 @@
-query ideasMain($token:String, $page:Int){
-ideas(token:$token, startRank: $page){
+query ideasMain($token:String, $view : String, $page:Int){
+ideas(token:$token, view : $view, startRank: $page){
 ... on IdeasField{
 id
 author

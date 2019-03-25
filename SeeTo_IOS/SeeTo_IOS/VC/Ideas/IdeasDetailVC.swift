@@ -10,7 +10,29 @@ import Foundation
 import UIKit
 
 class IdeasDetailVC : UIViewController {
-    override func viewDidLoad() {
+    @IBOutlet weak var Title_Label: UILabel!
+    @IBOutlet weak var Content_tv: UITextView!
+    @IBOutlet weak var Date_Label: UILabel!
+    @IBOutlet weak var like_btn: UIButton!
     
+    var id = ""
+    
+    override func viewDidLoad() {
+        getIdeasDetail()
+    }
+}
+
+extension IdeasDetailVC {
+    func getIdeasDetail(){
+        _ = apollo.rx.fetch(query: IdeasMainQuery(token: UserDefaults.standard.value(forKey: "accessToken") as? String, view: id)).subscribe(onNext: { [weak self] res in
+            if(res.ideas == nil) {self?.showToast(msg: "아이디어 내용 불러오기 실패")}
+            for i in (res.ideas?.indices)!{
+                self?.Title_Label.text = res.ideas?[i]?.asIdeasField?.title
+                self?.Content_tv.text = res.ideas?[i]?.asIdeasField?.body
+                
+                let createdat = res.ideas?[i]?.asIdeasField?.createdAt?.components(separatedBy: "T")
+                self?.Date_Label.text = createdat![0]
+            }
+        })
     }
 }
