@@ -2,6 +2,7 @@ PODS:
   - Apollo (0.9.5):
     - Apollo/Core (= 0.9.5)
   - Apollo/Core (0.9.5)
+  - DLRadioButton (1.4.12)
   - RxApolloClient (0.1.0):
     - Apollo (~> 0.9.4)
     - RxSwift (~> 4.0)
@@ -15,6 +16,7 @@ PODS:
 
 DEPENDENCIES:
   - Apollo (~> 0.9.4)
+  - DLRadioButton (~> 1.4)
   - RxApolloClient
   - RxCocoa (~> 4.0)
   - RxSwift (~> 4.0)
@@ -24,6 +26,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Apollo
+    - DLRadioButton
     - RxApolloClient
     - RxAtomic
     - RxCocoa
@@ -33,6 +36,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Apollo: 19caf3246d292bbb69ecad1bd098661f78222aba
+  DLRadioButton: d7c4e225ed0e8013cef7be61455230c7557ad7c1
   RxApolloClient: 33a9b145c6990d77bd240ff3b1395b6115ecb82c
   RxAtomic: d00e97c10db88c6f08540e0bf2752fc5a2404167
   RxCocoa: 477990dc3b4c3ff55fb0ac77e1cc06244e0aaec8
@@ -40,6 +44,6 @@ SPEC CHECKSUMS:
   "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
   XLPagerTabStrip: 63166e21c9844fa30f2d95d30f335e73be5caf22
 
-PODFILE CHECKSUM: 74ca39f6615169c4e79e78f1b3653fe3619305a7
+PODFILE CHECKSUM: b459f619caf7e29e8905f2690e8d4f069fcbe0b3
 
 COCOAPODS: 1.5.3

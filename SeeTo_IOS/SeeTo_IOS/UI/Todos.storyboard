@@ -123,11 +123,12 @@
                     </view>
                     <connections>
                         <outlet property="TodoTableView" destination="Adt-dv-1ex" id="dAs-Fq-ugk"/>
+                        <segue destination="5z6-0f-Jd9" kind="show" identifier="toTodoDetail" id="oBY-Gh-hmQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Znp-oe-XHf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-610.39999999999998" y="-268.22660098522169"/>
+            <point key="canvasLocation" x="-610" y="-268"/>
         </scene>
         <!--Todo Select CategoryVC-->
         <scene sceneID="7nD-La-RmX">
@@ -366,10 +367,10 @@
             </objects>
             <point key="canvasLocation" x="2648.8000000000002" y="-268.22660098522169"/>
         </scene>
-        <!--View Controller-->
+        <!--Todo DetailVC-->
         <scene sceneID="Q9b-lK-j52">
             <objects>
-                <viewController id="5z6-0f-Jd9" sceneMemberID="viewController">
+                <viewController id="5z6-0f-Jd9" customClass="TodoDetailVC" customModule="SeeTo_IOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EO2-XT-8ON">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -392,13 +393,64 @@
                                     <constraint firstAttribute="height" constant="595" id="xAL-VU-gzQ"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="XVE-aO-xMm">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TodoDetailCell" id="XVE-aO-xMm" customClass="TodoDetailCell" customModule="SeeTo_IOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="280" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XVE-aO-xMm" id="uJ4-gx-muU">
                                             <rect key="frame" x="0.0" y="0.0" width="280" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sct-q3-SrD" customClass="DLRadioButton">
+                                                    <rect key="frame" x="15" y="13" width="15" height="15"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="15" id="1pm-Xc-AYr"/>
+                                                        <constraint firstAttribute="height" constant="15" id="r0T-wY-B8x"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="iconSize">
+                                                            <real key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="iconStrokeWidth">
+                                                            <real key="value" value="4"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="indicatorSize">
+                                                            <real key="value" value="3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="indicatorColor">
+                                                            <color key="value" red="0.79359692339999999" green="0.6798174977" blue="0.98042458300000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
+                                                            <color key="value" red="0.76639676089999997" green="0.63533860450000001" blue="0.98042803999999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKY-bp-zZm">
+                                                    <rect key="frame" x="38" y="11" width="210" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="210" id="duW-qU-PGt"/>
+                                                        <constraint firstAttribute="height" constant="20" id="wQe-HI-L6n"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="MKY-bp-zZm" firstAttribute="leading" secondItem="Sct-q3-SrD" secondAttribute="trailing" constant="8" id="3Ll-sz-hNg"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="MKY-bp-zZm" secondAttribute="trailing" constant="17" id="5Zj-rG-BJB"/>
+                                                <constraint firstItem="MKY-bp-zZm" firstAttribute="top" secondItem="uJ4-gx-muU" secondAttribute="topMargin" id="CUL-jT-aVz"/>
+                                                <constraint firstItem="MKY-bp-zZm" firstAttribute="leading" secondItem="Sct-q3-SrD" secondAttribute="trailing" constant="8" id="ITG-SO-fSK"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Sct-q3-SrD" secondAttribute="bottom" constant="5" id="Ijk-Ef-El6"/>
+                                                <constraint firstItem="Sct-q3-SrD" firstAttribute="leading" secondItem="uJ4-gx-muU" secondAttribute="leadingMargin" id="T5l-FS-i3j"/>
+                                                <constraint firstItem="Sct-q3-SrD" firstAttribute="top" secondItem="uJ4-gx-muU" secondAttribute="topMargin" constant="2" id="Ub5-tC-yKG"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="MKY-bp-zZm" secondAttribute="bottom" constant="2" id="kTF-54-i9K"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="todo_checkbox" destination="Sct-q3-SrD" id="jHk-FT-8lh"/>
+                                            <outlet property="todo_content" destination="MKY-bp-zZm" id="Y1s-PM-6mk"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -413,6 +465,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QLa-VF-ipf"/>
                     </view>
+                    <connections>
+                        <outlet property="TodoDetailTitle" destination="fZN-Vb-TLt" id="Vbc-yp-X3z"/>
+                        <outlet property="TodoDetail_tableview" destination="DEn-0R-174" id="mMH-GD-fH4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z2f-6m-Esf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

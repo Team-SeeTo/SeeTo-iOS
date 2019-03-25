@@ -144,6 +144,7 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Apollo/Apollo.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/DLRadioButton/DLRadioButton.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/RxApolloClient/RxApolloClient.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework"
@@ -153,6 +154,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Apollo/Apollo.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/DLRadioButton/DLRadioButton.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/RxApolloClient/RxApolloClient.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework"

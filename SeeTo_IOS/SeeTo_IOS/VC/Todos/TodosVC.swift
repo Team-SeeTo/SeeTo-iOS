@@ -83,7 +83,7 @@ extension TodosVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        performSegue(withIdentifier: "toTodoDetail", sender: nil)
     }
     
 }

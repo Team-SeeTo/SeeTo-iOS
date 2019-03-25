@@ -7,9 +7,11 @@ target 'SeeTo_IOS' do
 	pod 'XLPagerTabStrip', '~> 8.1'
 	pod 'UITextView+Placeholder'
 	pod 'Apollo', '~> 0.9.4'
+	pod 'DLRadioButton', '~> 1.4'
 	pod 'RxSwift', '~> 4.0'
         pod 'RxCocoa','~> 4.0'
 	pod 'RxApolloClient'
+
 
   # Pods for SeeTo_IOS
 

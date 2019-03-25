@@ -34,6 +34,8 @@
 		683AFF76223FE1F9008BDA2E /* InventoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683AFF75223FE1F9008BDA2E /* InventoryVC.swift */; };
 		683B3FAF2248514300228102 /* outline_time.png in Resources */ = {isa = PBXBuildFile; fileRef = 683B3FAE2248514300228102 /* outline_time.png */; };
 		683B3FB12248520200228102 /* round_send_24px.png in Resources */ = {isa = PBXBuildFile; fileRef = 683B3FB02248520200228102 /* round_send_24px.png */; };
+		683B3FB52248ED8200228102 /* TodoDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683B3FB42248ED8200228102 /* TodoDetailVC.swift */; };
+		683B3FB72248EE3400228102 /* TodoDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683B3FB62248EE3400228102 /* TodoDetailCell.swift */; };
 		683BBBFF222E56EE001F4F83 /* Todos.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 683BBBFE222E56EE001F4F83 /* Todos.storyboard */; };
 		683BBC01222E56FD001F4F83 /* TimeLine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 683BBC00222E56FD001F4F83 /* TimeLine.storyboard */; };
 		683BBC03222E571C001F4F83 /* Ideas.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 683BBC02222E571C001F4F83 /* Ideas.storyboard */; };
@@ -148,6 +150,8 @@
 		683AFF75223FE1F9008BDA2E /* InventoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryVC.swift; sourceTree = "<group>"; };
 		683B3FAE2248514300228102 /* outline_time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = outline_time.png; sourceTree = "<group>"; };
 		683B3FB02248520200228102 /* round_send_24px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = round_send_24px.png; sourceTree = "<group>"; };
+		683B3FB42248ED8200228102 /* TodoDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailVC.swift; sourceTree = "<group>"; };
+		683B3FB62248EE3400228102 /* TodoDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailCell.swift; sourceTree = "<group>"; };
 		683BBBFE222E56EE001F4F83 /* Todos.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Todos.storyboard; sourceTree = "<group>"; };
 		683BBC00222E56FD001F4F83 /* TimeLine.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TimeLine.storyboard; sourceTree = "<group>"; };
 		683BBC02222E571C001F4F83 /* Ideas.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Ideas.storyboard; sourceTree = "<group>"; };
@@ -446,6 +450,8 @@
 				68415A532236A710005A5A7A /* TodoInfinityCell.swift */,
 				68415A552236A74F005A5A7A /* TodoStandardCell.swift */,
 				683F5F462241B4D600C1E467 /* TodoEditCell.swift */,
+				683B3FB42248ED8200228102 /* TodoDetailVC.swift */,
+				683B3FB62248EE3400228102 /* TodoDetailCell.swift */,
 			);
 			path = Todos;
 			sourceTree = "<group>";
@@ -730,6 +736,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SeeTo_IOS/Pods-SeeTo_IOS-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Apollo/Apollo.framework",
+				"${BUILT_PRODUCTS_DIR}/DLRadioButton/DLRadioButton.framework",
 				"${BUILT_PRODUCTS_DIR}/RxApolloClient/RxApolloClient.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
@@ -742,6 +749,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Apollo.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DLRadioButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxApolloClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
@@ -861,6 +869,7 @@
 				68380459223B254E004B73DD /* StoreCell.swift in Sources */,
 				68F43CE9222D1719003258A3 /* Shape.swift in Sources */,
 				681175D922325C9D00E98BDE /* TodoSelectCategoryVC.swift in Sources */,
+				683B3FB72248EE3400228102 /* TodoDetailCell.swift in Sources */,
 				683BBC0E222E580F001F4F83 /* QuickMemoVC.swift in Sources */,
 				68392FF52230114800D14594 /* QuickMemoCell.swift in Sources */,
 				68F43CED222D2FF0003258A3 /* Colors.swift in Sources */,
@@ -880,6 +889,7 @@
 				683E4B2322353866009F92E5 /* TodoSelectModeVC.swift in Sources */,
 				6847F376223092DA009239F4 /* MainMenuCell.swift in Sources */,
 				683E4B2A2235437A009F92E5 /* IdeasWriteContentVC.swift in Sources */,
+				683B3FB52248ED8200228102 /* TodoDetailVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

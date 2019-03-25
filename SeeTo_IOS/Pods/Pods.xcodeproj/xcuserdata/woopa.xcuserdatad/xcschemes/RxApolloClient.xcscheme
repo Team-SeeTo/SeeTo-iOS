@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "905BB00005A2FF302F5EA261FEB5137D"
+               BlueprintIdentifier = "F6AEFCBE681C502964D51E57A2B9D15C"
                BlueprintName = "RxApolloClient"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "RxApolloClient.framework">
