@@ -42,25 +42,27 @@ public enum Type: RawRepresentable, Equatable, Hashable, Apollo.JSONDecodable, A
 
 public final class TodoMainQuery: GraphQLQuery {
   public let operationDefinition =
-    "query TodoMain($token: String, $orderBy: String) {\n  todo(token: $token, orderBy: $orderBy) {\n    __typename\n    ... on ToDoField {\n      title\n      type\n      createdAt\n      id\n      milestones {\n        __typename\n        id\n        name\n        isCompleted\n      }\n      expiration\n      isCompleted\n    }\n  }\n}"
+    "query TodoMain($token: String, $orderBy: String, $searchString: String) {\n  todo(token: $token, orderBy: $orderBy, searchString: $searchString) {\n    __typename\n    ... on ToDoField {\n      title\n      type\n      createdAt\n      id\n      milestones {\n        __typename\n        id\n        name\n        isCompleted\n      }\n      expiration\n      isCompleted\n    }\n  }\n}"
 
   public var token: String?
   public var orderBy: String?
+  public var searchString: String?
 
-  public init(token: String? = nil, orderBy: String? = nil) {
+  public init(token: String? = nil, orderBy: String? = nil, searchString: String? = nil) {
     self.token = token
     self.orderBy = orderBy
+    self.searchString = searchString
   }
 
   public var variables: GraphQLMap? {
-    return ["token": token, "orderBy": orderBy]
+    return ["token": token, "orderBy": orderBy, "searchString": searchString]
   }
 
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes = ["Query"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("todo", arguments: ["token": GraphQLVariable("token"), "orderBy": GraphQLVariable("orderBy")], type: .list(.object(Todo.selections))),
+      GraphQLField("todo", arguments: ["token": GraphQLVariable("token"), "orderBy": GraphQLVariable("orderBy"), "searchString": GraphQLVariable("searchString")], type: .list(.object(Todo.selections))),
     ]
 
     public private(set) var resultMap: ResultMap

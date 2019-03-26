@@ -1,5 +1,5 @@
-query TodoMain($token : String, $orderBy : String){
-todo(token : $token, orderBy : $orderBy){
+query TodoMain($token : String, $orderBy : String, $searchString : String){
+todo(token : $token, orderBy : $orderBy, searchString : $searchString){
 ...on ToDoField{
 title
 type

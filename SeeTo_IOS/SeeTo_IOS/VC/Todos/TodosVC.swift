@@ -15,9 +15,11 @@ class TodosVC: UIViewController, IndicatorInfoProvider{
     
     var todoTitie_array : [String] = []
     var todoCategory_array : [String] = []
+    var todoID_array : [String] = []
     var milestonesName_array : [String] = []
     var milestonesID_array : [String] = []
     var milestonesIsChecked_array : [Bool] = []
+    var current_row = ""
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,14 +46,8 @@ extension TodosVC : UITableViewDelegate, UITableViewDataSource {
                     for i in (res.todo?.indices)!{
                         self?.todoTitie_array.append(res.todo?[i]?.asToDoField?.title ?? "nil")
                         self?.todoCategory_array.append(res.todo?[i]?.asToDoField?.type ?? "nil")
-                        
-                        for j in (res.todo?[i]?.asToDoField?.milestones?.indices)!{
-                            self?.milestonesName_array.append(res.todo?[i]?.asToDoField?.milestones?[j]?.name ?? "nil")
-                            self?.milestonesID_array.append(res.todo?[i]?.asToDoField?.milestones?[j]?.id ?? "nil")
-                            self?.milestonesIsChecked_array.append(res.todo?[i]?.asToDoField?.milestones?[j]?.isCompleted ?? false)
-                        }
+                        self?.todoID_array.append(res.todo?[i]?.asToDoField?.id ?? "nil" )
                     }
-                    
                     self?.TodoTableView.reloadData()
                 }
             })
@@ -83,7 +79,22 @@ extension TodosVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        current_row = todoTitie_array[indexPath.row]
         performSegue(withIdentifier: "toTodoDetail", sender: nil)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toTodoDetail" {
+            let TodoDetail = segue.destination as! TodoDetailVC
+            TodoDetail.todo_title = current_row
+        }
+    }
+    
 }
+
+class TodoStandardCell : UITableViewCell {
+    @IBOutlet weak var todo_standard_cell: UILabel!
+    
+    @IBOutlet weak var todo_standard_status: UILabel!
+}
+
