@@ -51,3 +51,7 @@ extension QuickMemoVC : UITableViewDelegate, UITableViewDataSource{
     }
     
 }
+
+class QuickMemoCell : UITableViewCell {
+    @IBOutlet weak var PreviewText: UILabel!
+}

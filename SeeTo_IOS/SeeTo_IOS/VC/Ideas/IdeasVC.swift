@@ -52,9 +52,8 @@ extension IdeasVC : UITableViewDataSource, UITableViewDelegate{
                         self?.likeCount_array.append(res.ideas?[i]?.asIdeasField?.upvoter ?? 0)
                         self?.id_array.append(res.ideas?[i]?.asIdeasField?.id ?? "nil")
                         self?.rank_array.append(i + 1)
-                        
-                        self?.tableview.reloadData()
                     }
+                    self?.tableview.reloadData()
                 }
             })
         
@@ -99,4 +98,25 @@ extension IdeasVC : UITableViewDataSource, UITableViewDelegate{
         }
     }
     
+}
+
+class IdeasCell : UITableViewCell {
+    @IBOutlet weak var Title: UILabel!
+    @IBOutlet weak var Category: UILabel!
+    @IBOutlet weak var like_btn: UIImageView!
+    @IBOutlet weak var like_total: UILabel!
+    @IBOutlet weak var comment_total: UILabel!
+    @IBOutlet weak var share_btn: UIImageView!
+    @IBOutlet weak var rank: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        //        layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+//                contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0))
+//                bounds = bounds.inset(by: UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0))
+    }
 }

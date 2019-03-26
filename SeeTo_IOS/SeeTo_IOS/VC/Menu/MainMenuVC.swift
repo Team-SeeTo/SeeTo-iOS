@@ -65,3 +65,8 @@ extension MainMenuVC : UITableViewDataSource, UITableViewDelegate {
     }
     
 }
+
+class MainMenuCell : UITableViewCell {
+    @IBOutlet weak var menuImage: UIImageView!
+    @IBOutlet weak var menuLabel: UILabel!
+}

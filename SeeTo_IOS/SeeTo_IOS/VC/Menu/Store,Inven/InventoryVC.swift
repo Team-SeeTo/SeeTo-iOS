@@ -34,3 +34,11 @@ extension InventoryVC : UITableViewDataSource,UITableViewDelegate{
     }
     
 }
+
+class InventroyCell : UITableViewCell {
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var explain: UILabel!
+    @IBAction func UsingItem(_ sender: Any) {
+        
+    }
+}

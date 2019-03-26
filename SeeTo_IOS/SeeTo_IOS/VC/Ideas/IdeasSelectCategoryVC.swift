@@ -16,6 +16,7 @@ class IdeasSelectCategoryVC : UIViewController {
     
     override func viewDidLoad() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "next", style: .plain, target: self, action: #selector(IdeasSelectCategoryVC.goNext))
+        currentItem = "IT"
         PickerView.dataSource = self
         PickerView.delegate = self
     }

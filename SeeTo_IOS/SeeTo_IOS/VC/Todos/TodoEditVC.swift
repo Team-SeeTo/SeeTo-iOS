@@ -82,9 +82,9 @@ extension TodoEditVC : UITableViewDelegate,UITableViewDataSource {
                     if res.newTodo?.result?.asResponseMessageField?.isSuccess ?? false {
                         let alert = UIAlertController(title: "Todo 작성", message: "Todo 작성이 완료되었습니다.", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default , handler: { _ in
-                            self?.navigationController?.popToRootViewController(animated: true)
                             let todoVC = TodosVC()
                             todoVC.getTodoListData()
+                            self?.navigationController?.popToRootViewController(animated: true)
                         }))
                         
                         self?.present(alert, animated: true, completion: nil)
@@ -93,4 +93,8 @@ extension TodoEditVC : UITableViewDelegate,UITableViewDataSource {
             })
     }
 
+}
+
+class TodoEditCell : UITableViewCell {
+    @IBOutlet weak var TodoLabel: UILabel!
 }

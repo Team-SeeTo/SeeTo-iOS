@@ -40,3 +40,9 @@ extension StoreVC : UITableViewDataSource, UITableViewDelegate  {
     }
 
 }
+
+class StoreCell : UITableViewCell {
+    @IBOutlet weak var item_title: UILabel!
+    @IBOutlet weak var item_explain: UILabel!
+    @IBOutlet weak var item_price: UILabel!
+}

@@ -31,6 +31,9 @@ extension IdeasWriteContentVC {
             if(result?.data?.newIdea?.result?.asResponseMessageField?.isSuccess! ?? false){
                 let alert = UIAlertController(title: "아이디어 작성", message: "새 아이디어 작성이 완료되었습니다.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (UIAlertAction) in
+                    let ideaVC = IdeasVC()
+                    ideaVC.getIdeasList()
+                    
                     self.navigationController?.popToRootViewController(animated: true)
                 }))
                 
