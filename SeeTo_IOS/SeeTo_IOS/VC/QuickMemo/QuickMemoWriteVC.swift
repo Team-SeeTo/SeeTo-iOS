@@ -8,11 +8,11 @@
 
 import Foundation
 import UIKit
-import UITextView_Placeholder
 
 class QuickMemoWirteVC : UIViewController {
     
     @IBOutlet weak var QuickMemoWriteTextView: UITextView!
+    var coreData : CoreData!
     
     override func viewDidLoad() {
         QuickMemoWriteTextView.placeholder = "ContentHere"
@@ -23,6 +23,15 @@ class QuickMemoWirteVC : UIViewController {
 
 extension QuickMemoWirteVC{
     @objc func goFinish(){
-    
+        coreData = CoreData.init(entityName: "Memo")
+        coreData.set(value: QuickMemoWriteTextView.text , Key: "content")
+        let result = coreData.get(entityName: "Memo")
+        if result != nil {
+            let alert = UIAlertController(title: "Memo", message: "메모가 성공적으로 등록되었습니다.", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }

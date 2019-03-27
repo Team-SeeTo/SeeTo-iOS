@@ -29,4 +29,19 @@ class CoreData {
             print("Could not save. \(error), \(error.userInfo)")
         }
     }
+    
+    func get(entityName : String) -> [NSManagedObject] {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+        request.returnsObjectsAsFaults = false
+        var result : [NSManagedObject] = []
+        
+        do {
+            result = try managedContext.fetch(request) as! [NSManagedObject]
+        } catch {
+            print("Failed")
+        }
+        
+        return result
+    }
 }
+
