@@ -25,13 +25,17 @@ extension QuickMemoWirteVC{
     @objc func goFinish(){
         coreData = CoreData.init(entityName: "Memo")
         coreData.set(value: QuickMemoWriteTextView.text , Key: "content")
-        let result = coreData.get(entityName: "Memo")
-        if result != nil {
+        let result = coreData.get()
+        if result == nil { self.showToast(msg: "메모 저장 실패") }
+        else {
             let alert = UIAlertController(title: "Memo", message: "메모가 성공적으로 등록되었습니다.", preferredStyle: .alert)
             
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                self.navigationController?.popToRootViewController(animated: true)
+            }))
             
             self.present(alert, animated: true, completion: nil)
         }
+        
     }
 }

@@ -13,8 +13,10 @@ import UIKit
 class CoreData {
     var object : NSManagedObject!
     var managedContext : NSManagedObjectContext!
+    var entityName = ""
     
     init(entityName : String) {
+        self.entityName = entityName
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         managedContext = appDelegate.persistentContainer.viewContext
         let Entity = NSEntityDescription.entity(forEntityName: entityName, in: managedContext)
@@ -30,7 +32,7 @@ class CoreData {
         }
     }
     
-    func get(entityName : String) -> [NSManagedObject] {
+    func get() -> [NSManagedObject] {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
         request.returnsObjectsAsFaults = false
         var result : [NSManagedObject] = []
