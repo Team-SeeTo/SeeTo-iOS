@@ -11,9 +11,10 @@ import UIKit
 
 class QuickMemoDetailVC : UIViewController {
     @IBOutlet weak var QuickMemoTV: UITextView!
+    var QM_content = ""
     
     override func viewDidLoad() {
-        
+        QuickMemoTV.text = QM_content
     }
 }
 

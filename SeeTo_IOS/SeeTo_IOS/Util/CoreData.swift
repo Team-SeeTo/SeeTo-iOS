@@ -45,5 +45,20 @@ class CoreData {
         
         return result
     }
+    
+    func delete(content : String, index : Int) {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+        request.returnsObjectsAsFaults = false
+        var result : [NSManagedObject] = []
+        
+        do {
+            result = try managedContext.fetch(request) as! [NSManagedObject]
+            let objectToDelete = result[index].value(forKey: content)
+            managedContext.delete(objectToDelete as! NSManagedObject)
+        } catch {
+            print("Failed")
+        }
+        
+    }
 }
 

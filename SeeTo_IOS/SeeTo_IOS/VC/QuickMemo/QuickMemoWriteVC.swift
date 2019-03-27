@@ -23,6 +23,7 @@ class QuickMemoWirteVC : UIViewController {
 
 extension QuickMemoWirteVC{
     @objc func goFinish(){
+        print("finish button clicked")
         coreData = CoreData.init(entityName: "Memo")
         coreData.set(value: QuickMemoWriteTextView.text , Key: "content")
         let result = coreData.get()

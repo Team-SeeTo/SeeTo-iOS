@@ -69,22 +69,22 @@ extension TimeLineVC : UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return title_array.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
                 
         let cell = tableview.dequeueReusableCell(withIdentifier: "TLCell", for: indexPath as IndexPath) as! TimeLineCell
         
-        cell.Title.text = title_array[indexPath.row]
-        cell.FirstString.text = firstStr_array[indexPath.row]
-        cell.SecondString.text = secondStr_array[indexPath.row]
-        cell.ThirdString.text = thirdStr_array[indexPath.row]
+        cell.Title.text = title_array[indexPath.section]
+        cell.FirstString.text = firstStr_array[indexPath.section]
+        cell.SecondString.text = secondStr_array[indexPath.section]
+        cell.ThirdString.text = thirdStr_array[indexPath.section]
         
-        cell.FirstNumber.text = "\(firstNum_array[indexPath.row])"
-        cell.SecondNumber.text = "\(secondNum_array[indexPath.row])"
-        cell.ThirdNumber.text = "\(thirdNum_array[indexPath.row])"
-        cell.TotalPoint.text = "\(totalNum_array[indexPath.row])"
+        cell.FirstNumber.text = "\(firstNum_array[indexPath.section])"
+        cell.SecondNumber.text = "\(secondNum_array[indexPath.section])"
+        cell.ThirdNumber.text = "\(thirdNum_array[indexPath.section])"
+        cell.TotalPoint.text = "\(totalNum_array[indexPath.section])"
         
         cell.selectionStyle = .none
         
@@ -96,7 +96,7 @@ extension TimeLineVC : UITableViewDelegate, UITableViewDataSource{
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return title_array.count
     }
 }
 

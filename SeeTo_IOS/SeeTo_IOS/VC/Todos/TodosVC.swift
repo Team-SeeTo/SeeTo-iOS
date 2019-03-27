@@ -11,7 +11,7 @@ import UIKit
 import XLPagerTabStrip
 
 class TodosVC: UIViewController, IndicatorInfoProvider{
-    @IBOutlet weak var TodoTableView: UITableView!
+    @IBOutlet weak var TodoTableView: dynamicTableView!
     
     var todoTitie_array : [String] = []
     var todoCategory_array : [String] = []
@@ -23,6 +23,7 @@ class TodosVC: UIViewController, IndicatorInfoProvider{
     
     
     override func viewWillAppear(_ animated: Bool) {
+        self.TodoTableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -47,6 +48,7 @@ extension TodosVC : UITableViewDelegate, UITableViewDataSource {
                         self?.todoTitie_array.append(res.todo?[i]?.asToDoField?.title ?? "nil")
                         self?.todoCategory_array.append(res.todo?[i]?.asToDoField?.type ?? "nil")
                         self?.todoID_array.append(res.todo?[i]?.asToDoField?.id ?? "nil" )
+                        self?.TodoTableView.height = CGFloat((110*(self?.todoTitie_array.count ?? 1)))
                     }
                     self?.TodoTableView.reloadData()
                 }
@@ -55,15 +57,15 @@ extension TodosVC : UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return todoTitie_array.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       
         let standardcell = TodoTableView.dequeueReusableCell(withIdentifier: "StandardCell", for: indexPath as IndexPath) as! TodoStandardCell
         
-        standardcell.todo_standard_cell.text = todoTitie_array[indexPath.row]
-        standardcell.todo_standard_status.text = todoCategory_array[indexPath.row]
+        standardcell.todo_standard_cell.text = todoTitie_array[indexPath.section]
+        standardcell.todo_standard_status.text = todoCategory_array[indexPath.section]
         
         standardcell.selectionStyle = .none
         
@@ -71,7 +73,7 @@ extension TodosVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return todoTitie_array.count
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

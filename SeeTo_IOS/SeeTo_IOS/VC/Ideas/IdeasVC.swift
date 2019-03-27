@@ -14,7 +14,7 @@ import RxSwift
 import RxCocoa
 
 class IdeasVC : UIViewController, IndicatorInfoProvider {
-    @IBOutlet weak var tableview: UITableView!
+    @IBOutlet weak var tableview: dynamicTableView!
     var title_array : [String] = []
     var category_array : [String] = []
     var commentCount_array : [Int] = []
@@ -27,6 +27,8 @@ class IdeasVC : UIViewController, IndicatorInfoProvider {
         tableview.dataSource = self
         tableview.delegate = self
         getIdeasList()
+        self.tableview.height = CGFloat((100*(self.title_array.count ?? 1)))
+        tableview.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,24 +55,24 @@ extension IdeasVC : UITableViewDataSource, UITableViewDelegate{
                         self?.id_array.append(res.ideas?[i]?.asIdeasField?.id ?? "nil")
                         self?.rank_array.append(i + 1)
                     }
+                    self?.tableview.height = CGFloat((100*(self?.title_array.count ?? 1)))
                     self?.tableview.reloadData()
                 }
             })
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return title_array.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "IdeasCell", for: indexPath as IndexPath) as! IdeasCell
         
-        cell.Title.text = title_array[indexPath.row]
-        cell.Category.text = category_array[indexPath.row]
-        cell.like_total.text = "\(likeCount_array[indexPath.row])"
-        cell.comment_total.text = "\(commentCount_array[indexPath.row])"
-        cell.rank.text = "#\(rank_array[indexPath.row])"
+        cell.Title.text = title_array[indexPath.section]
+        cell.Category.text = category_array[indexPath.section]
+        cell.like_total.text = "\(likeCount_array[indexPath.section])"
+        cell.comment_total.text = "\(commentCount_array[indexPath.section])"
+        cell.rank.text = "#\(rank_array[indexPath.section])"
         
         cell.selectionStyle = .none
 
@@ -79,7 +81,7 @@ extension IdeasVC : UITableViewDataSource, UITableViewDelegate{
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return title_array.count
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
