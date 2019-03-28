@@ -20,7 +20,7 @@ class InventoryVC : UIViewController {
 
 extension InventoryVC : UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -31,6 +31,14 @@ extension InventoryVC : UITableViewDataSource,UITableViewDelegate{
         cell.explain.text = "You can rest today!"
         
         return cell
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 20
     }
     
 }
