@@ -26,22 +26,24 @@ class IdeasWriteContentVC : UIViewController {
 
 extension IdeasWriteContentVC {
     @objc func goNext(){
-        apollo.perform(mutation: NewIdeaMutation(category: category, token: UserDefaults.standard.value(forKey: "accessToken") as? String, body: Ideas_content.text, title: Ideas_title.text)) { result,error in
+        apollo.rx.perform(mutation: NewIdeaMutation(category: category, token: UserDefaults.standard.value(forKey: "accessToken") as? String, body: Ideas_content.text, title: Ideas_title.text))
+        .subscribe(onNext: { [weak self] res in
+            guard let this = self else { return }
             
-            if(result?.data?.newIdea?.result?.asResponseMessageField?.isSuccess! ?? false){
+            if(res.newIdea == nil ){this.showToast(msg: "아이디어 작성 실패")}
+            else {
                 let alert = UIAlertController(title: "아이디어 작성", message: "새 아이디어 작성이 완료되었습니다.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (UIAlertAction) in
                     let ideaVC = IdeasVC()
                     ideaVC.getIdeasList()
                     
-                    self.navigationController?.popToRootViewController(animated: true)
+                    this.navigationController?.popToRootViewController(animated: true)
                 }))
                 
-                self.present(alert, animated: true, completion: nil)
-            } else {
-                self.showToast(msg: "새 아이디어 작성에 실패하였습니다.")
+                this.present(alert, animated: true, completion: nil)
             }
-        }
+            
+        })
     }
 }
 

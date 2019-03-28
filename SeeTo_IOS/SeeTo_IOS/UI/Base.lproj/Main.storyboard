@@ -61,7 +61,6 @@
                                 </constraints>
                                 <connections>
                                     <action selector="MainFAB:" destination="zBZ-tJ-k1L" eventType="touchUpInside" id="HUP-pf-JXZ"/>
-                                    <action selector="TodoFab_Click:" destination="zBZ-tJ-k1L" eventType="touchUpInside" id="c14-VB-ChL"/>
                                     <segue destination="iuo-dA-gmD" kind="show" identifier="toTodo" id="gHA-Pi-UgA"/>
                                 </connections>
                             </button>
@@ -73,7 +72,6 @@
                                     <constraint firstAttribute="width" constant="50" id="pce-t0-RK1"/>
                                 </constraints>
                                 <connections>
-                                    <action selector="IdeasFab_Click:" destination="zBZ-tJ-k1L" eventType="touchUpInside" id="NdP-GK-iCu"/>
                                     <action selector="MainFAB:" destination="zBZ-tJ-k1L" eventType="touchUpInside" id="XJa-jB-OrN"/>
                                     <segue destination="goC-g3-zeM" kind="show" identifier="toIdeas" id="8SX-PJ-PzC"/>
                                 </connections>
@@ -87,7 +85,6 @@
                                 </constraints>
                                 <connections>
                                     <action selector="MainFAB:" destination="zBZ-tJ-k1L" eventType="touchUpInside" id="faI-gC-LhG"/>
-                                    <action selector="MemoFab_Click:" destination="zBZ-tJ-k1L" eventType="touchUpInside" id="phv-T1-XZr"/>
                                     <segue destination="4Dm-v3-EXH" kind="show" identifier="toQuickMenu" id="sN2-z0-8qN"/>
                                 </connections>
                             </button>
