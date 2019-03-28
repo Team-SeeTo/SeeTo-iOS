@@ -32,15 +32,16 @@ extension TodoDetailVC : UITableViewDelegate, UITableViewDataSource{
     func getTodoDetailData(){
         _ = apollo.rx.fetch(query: TodoMainQuery(token: UserDefaults.standard.value(forKey: "accessToken") as? String, orderBy: "created_at", searchString: todo_title))
             .subscribe(onNext: { [weak self] res in
-                if (res.todo == nil) {self?.showToast(msg: "todo detail 정보 불러오기 실패")}
+                guard let this = self else { return }
+                if (res.todo == nil) { this.showToast(msg: "todo detail 정보 불러오기 실패") }
                 for i in (res.todo?.indices)! {
-                    self?.todo_title = res.todo?[i]?.asToDoField?.title ?? "nil"
+                    this.todo_title = res.todo?[i]?.asToDoField?.title ?? "nil"
                     for j in (res.todo?[i]?.asToDoField?.milestones?.indices)!{
-                        self?.todo_milestonesTitle_array.append(res.todo?[i]?.asToDoField?.milestones?[j]?.name ?? "nil")
+                        this.todo_milestonesTitle_array.append(res.todo?[i]?.asToDoField?.milestones?[j]?.name ?? "nil")
                     }
                 }
-                self?.TodoDetailTitle.text = self?.todo_title
-                self?.TodoDetail_tableview.reloadData()
+                this.TodoDetailTitle.text = self?.todo_title
+                this.TodoDetail_tableview.reloadData()
             })
     }
     

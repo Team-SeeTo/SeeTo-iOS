@@ -40,7 +40,6 @@
                                 <rect key="frame" x="0.0" y="88" width="375" height="255"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="255" id="i6c-Uk-JYD"/>
-                                    <constraint firstAttribute="width" constant="414" id="pyp-iz-Zur"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="SeeTo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GaS-sb-tAy">

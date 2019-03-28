@@ -18,17 +18,10 @@ class MainVC : ButtonBarPagerTabStripViewController{
     
     var flag = false
     
-    @IBAction func TodoFab_Click(_ sender: Any) {
-    }
-    @IBAction func IdeasFab_Click(_ sender: Any) {
-    }
-    @IBAction func MemoFab_Click(_ sender: Any) {
+    @IBAction func MainFAB(_ sender: Any) {
+        MainFaBtnClick()
     }
     
-    @IBAction func MainFAB(_ sender: Any) {
-       MainFaBtnClick()
-    }
-
     @IBAction func MenuBtn(_ sender: Any) {
         performSegue(withIdentifier: "toMenu", sender: nil)
     }
@@ -37,31 +30,25 @@ class MainVC : ButtonBarPagerTabStripViewController{
     
     @IBAction func SortBtn(_ sender: Any) {
         
-      
-
         let alert = UIAlertController(title: "Order By", message: "", preferredStyle: .actionSheet)
-        
+
         alert.addAction(UIAlertAction(title: "Ascending", style: .default, handler: nil))
-        
         alert.addAction(UIAlertAction(title: "Descending", style: .default, handler: nil))
-        
         alert.addAction(UIAlertAction(title: "Left time", style: .default, handler: nil))
-        
         alert.addAction(UIAlertAction(title: "Type", style: .default, handler: nil))
-        
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
         present(alert, animated: true, completion: nil)
     }
-
+    
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = false       
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         
         settings.style.buttonBarItemTitleColor = Color.PURPLE.getColor()
         settings.style.buttonBarItemBackgroundColor = .white
@@ -75,7 +62,7 @@ class MainVC : ButtonBarPagerTabStripViewController{
             
         }
         
-
+        
         
         self.navigationController?.navigationBar.titleTextAttributes =
             [NSAttributedString.Key.foregroundColor : Color.PURPLE.getColor(),
@@ -100,7 +87,7 @@ class MainVC : ButtonBarPagerTabStripViewController{
         
     }
 }
-    
+
 extension MainVC {
     func MainFaBtnClick(){
         if(flag == false){

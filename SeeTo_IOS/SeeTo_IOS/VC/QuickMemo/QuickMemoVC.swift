@@ -21,21 +21,27 @@ class QuickMemoVC : UIViewController , IndicatorInfoProvider{
     override func viewDidLoad() {
         tableview.dataSource = self
         tableview.delegate = self
+        getQuickMemoList()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        for i in coreData.get().indices {
-            if coreData.get()[i].value(forKey: "content") as? String != nil{
-                quickMemo_array.append(coreData.get()[i].value(forKey: "content") as! String)
-                self.tableview.height = CGFloat((200*(self.quickMemo_array.count )))
-            }
-        }
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo { return IndicatorInfo(title: "QuickMemo") }
 }
 
 extension QuickMemoVC : UITableViewDelegate, UITableViewDataSource{
+
+    func getQuickMemoList(){
+        for i in coreData.get().indices {
+            if coreData.get()[i].value(forKey: "content") as? String != nil{
+                quickMemo_array.append(coreData.get()[i].value(forKey: "content") as! String)
+                self.tableview.height = CGFloat((200*(self.quickMemo_array.count )))
+            }
+        }
+        tableview.reloadData()
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }

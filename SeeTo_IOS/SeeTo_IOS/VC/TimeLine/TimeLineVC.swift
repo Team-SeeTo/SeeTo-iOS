@@ -49,21 +49,22 @@ extension TimeLineVC : UITableViewDelegate, UITableViewDataSource{
     func getTimeLineData(date : String){
         _ = apollo.rx.fetch(query: TimelineMainQuery(token: UserDefaults.standard.value(forKey: "accessToken") as? String , date: date))
             .subscribe(onNext: { [weak self] res in
-                if(res.timeline == nil) {self!.showToast(msg: "Timeline 불러오기 실패")}
+                guard let this = self else { return }
+                if(res.timeline == nil) {this.showToast(msg: "Timeline 불러오기 실패")}
                 else {
-                    self!.firstNum_array.insert(res.timeline?.asTimeLineField?.todo?.milestoneComplete ?? 0,at: 0)
-                    self!.firstNum_array.insert(res.timeline?.asTimeLineField?.ideas?.newVote ?? 0,at: 1)
+                    this.firstNum_array.insert(res.timeline?.asTimeLineField?.todo?.milestoneComplete ?? 0,at: 0)
+                    this.firstNum_array.insert(res.timeline?.asTimeLineField?.ideas?.newVote ?? 0,at: 1)
                     
-                    self!.secondNum_array.insert(res.timeline?.asTimeLineField?.todo?.todoComplete ?? 0,at: 0)
-                    self!.secondNum_array.insert(res.timeline?.asTimeLineField?.ideas?.newComment ?? 0,at: 1)
+                    this.secondNum_array.insert(res.timeline?.asTimeLineField?.todo?.todoComplete ?? 0,at: 0)
+                    this.secondNum_array.insert(res.timeline?.asTimeLineField?.ideas?.newComment ?? 0,at: 1)
                     
-                    self!.thirdNum_array.insert(res.timeline?.asTimeLineField?.todo?.newCreate ?? 0,at: 0)
-                    self!.thirdNum_array.insert(res.timeline?.asTimeLineField?.ideas?.newCreate ?? 0,at: 1)
+                    this.thirdNum_array.insert(res.timeline?.asTimeLineField?.todo?.newCreate ?? 0,at: 0)
+                    this.thirdNum_array.insert(res.timeline?.asTimeLineField?.ideas?.newCreate ?? 0,at: 1)
                     
-                    self!.totalNum_array.insert(res.timeline?.asTimeLineField?.todo?.totalPoint ?? 0,at: 0)
-                    self!.totalNum_array.insert(res.timeline?.asTimeLineField?.ideas?.totalPoint ?? 0,at: 1)
+                    this.totalNum_array.insert(res.timeline?.asTimeLineField?.todo?.totalPoint ?? 0,at: 0)
+                    this.totalNum_array.insert(res.timeline?.asTimeLineField?.ideas?.totalPoint ?? 0,at: 1)
                     
-                    self!.tableview.reloadData()
+                    this.tableview.reloadData()
                 }
             })
     }

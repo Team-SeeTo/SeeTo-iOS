@@ -128,7 +128,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Emh-k1-Dcy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6172" y="-1945.5665024630543"/>
+            <point key="canvasLocation" x="6319" y="-2775"/>
         </scene>
         <!--Store-->
         <scene sceneID="YsO-6c-9Ew">
@@ -198,7 +198,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3000xp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xh0-dN-MbW">
-                                                    <rect key="frame" x="259" y="26" width="88" height="30"/>
+                                                    <rect key="frame" x="239" y="26" width="88" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="egZ-hY-49h"/>
                                                         <constraint firstAttribute="width" constant="88" id="oVZ-bg-bOu"/>
@@ -208,7 +208,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Streak Freeze" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iA4-bF-6UD">
-                                                    <rect key="frame" x="15" y="11" width="111" height="21"/>
+                                                    <rect key="frame" x="15" y="11" width="91" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <color key="textColor" red="0.76639676089999997" green="0.63533860450000001" blue="0.98042803999999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
@@ -351,7 +351,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dn-vo-qGL">
-                                                    <rect key="frame" x="0.0" y="75" width="375" height="44"/>
+                                                    <rect key="frame" x="0.0" y="75" width="355" height="44"/>
                                                     <color key="backgroundColor" red="0.76639676089999997" green="0.63533860450000001" blue="0.98042803999999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <state key="normal" title="Use">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>

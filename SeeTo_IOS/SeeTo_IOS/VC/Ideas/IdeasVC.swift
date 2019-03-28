@@ -27,8 +27,6 @@ class IdeasVC : UIViewController, IndicatorInfoProvider {
         tableview.dataSource = self
         tableview.delegate = self
         getIdeasList()
-        self.tableview.height = CGFloat((100*(self.title_array.count ?? 1)))
-        tableview.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,18 +43,19 @@ extension IdeasVC : UITableViewDataSource, UITableViewDelegate{
         _ = apollo.rx.fetch(query: IdeasMainQuery(token:
             UserDefaults.standard.value(forKey: "accessToken") as? String, page: 1))
             .subscribe(onNext: { [weak self] res in
-                if(res.ideas == nil) {self!.showToast(msg: "Ideas 불러오기 실패")}
+                guard let this = self else { return }
+                if(res.ideas == nil) {this.showToast(msg: "Ideas 불러오기 실패")}
                 else {
                     for i in (res.ideas?.indices)! {
-                        self?.title_array.append(res.ideas?[i]?.asIdeasField?.title ?? "nil")
-                        self?.category_array.append( res.ideas?[i]?.asIdeasField?.category ?? "nil")
-                        self?.commentCount_array.append(res.ideas?[i]?.asIdeasField?.comments?.commentCount ?? 0)
-                        self?.likeCount_array.append(res.ideas?[i]?.asIdeasField?.upvoter ?? 0)
-                        self?.id_array.append(res.ideas?[i]?.asIdeasField?.id ?? "nil")
-                        self?.rank_array.append(i + 1)
+                        this.title_array.append(res.ideas?[i]?.asIdeasField?.title ?? "nil")
+                        this.category_array.append( res.ideas?[i]?.asIdeasField?.category ?? "nil")
+                        this.commentCount_array.append(res.ideas?[i]?.asIdeasField?.comments?.commentCount ?? 0)
+                        this.likeCount_array.append(res.ideas?[i]?.asIdeasField?.upvoter ?? 0)
+                        this.id_array.append(res.ideas?[i]?.asIdeasField?.id ?? "nil")
+                        this.rank_array.append(i + 1)
                     }
-                    self?.tableview.height = CGFloat((100*(self?.title_array.count ?? 1)))
-                    self?.tableview.reloadData()
+//                    self?.tableview.height = CGFloat((100*(self?.title_array.count ?? 1)))
+                    this.tableview.reloadData()
                 }
             })
     }
@@ -110,15 +109,4 @@ class IdeasCell : UITableViewCell {
     @IBOutlet weak var comment_total: UILabel!
     @IBOutlet weak var share_btn: UIImageView!
     @IBOutlet weak var rank: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        //        layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-//                contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0))
-//                bounds = bounds.inset(by: UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0))
-    }
 }

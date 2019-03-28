@@ -29,11 +29,12 @@ class MainMenuVC : UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         _ =  apollo.rx.fetch(query: SimpleProfileQuery(token: UserDefaults.standard.value(forKey: "accessToken") as? String)).subscribe(onNext: {[weak self] res in
-            if (res == nil) {self?.showToast(msg: "계정 정보 불러오기 실패")}
+            guard let this = self else { return }
+            if (res == nil) {this.showToast(msg: "계정 정보 불러오기 실패")}
             else {
-                self?.userName.text = res.profile?.asProfileField?.username ?? ""
-                self?.rank.text = "My rank : #\(res.profile?.asProfileField?.rank ?? 0)"
-                self?.point.text = "\(res.profile?.asProfileField?.point ?? 0)p"
+                this.userName.text = res.profile?.asProfileField?.username ?? ""
+                this.rank.text = "My rank : #\(res.profile?.asProfileField?.rank ?? 0)"
+                this.point.text = "\(res.profile?.asProfileField?.point ?? 0)p"
             }
         })
     }

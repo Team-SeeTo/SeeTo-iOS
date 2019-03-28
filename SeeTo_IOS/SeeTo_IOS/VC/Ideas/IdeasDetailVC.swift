@@ -25,13 +25,14 @@ class IdeasDetailVC : UIViewController {
 extension IdeasDetailVC {
     func getIdeasDetail(){
         _ = apollo.rx.fetch(query: IdeasMainQuery(token: UserDefaults.standard.value(forKey: "accessToken") as? String, view: id)).subscribe(onNext: { [weak self] res in
-            if(res.ideas == nil) {self?.showToast(msg: "아이디어 내용 불러오기 실패")}
+            guard let this = self else { return }
+            if(res.ideas == nil) {this.showToast(msg: "아이디어 내용 불러오기 실패")}
             for i in (res.ideas?.indices)!{
-                self?.Title_Label.text = res.ideas?[i]?.asIdeasField?.title
-                self?.Content_tv.text = res.ideas?[i]?.asIdeasField?.body
+                this.Title_Label.text = res.ideas?[i]?.asIdeasField?.title
+                this.Content_tv.text = res.ideas?[i]?.asIdeasField?.body
                 
                 let createdat = res.ideas?[i]?.asIdeasField?.createdAt?.components(separatedBy: "T")
-                self?.Date_Label.text = createdat![0]
+                this.Date_Label.text = createdat![0]
             }
         })
     }

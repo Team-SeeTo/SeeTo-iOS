@@ -76,8 +76,9 @@ extension TodoEditVC : UITableViewDelegate,UITableViewDataSource {
     func NewTodoRequest(){
         _ = apollo.rx.perform(mutation: NewTodoMutation(title: TodoTitle.text, token: UserDefaults.standard.value(forKey: "accessToken") as? String, milestones: todolist, type: Type(rawValue: mode ), expiration: date))
             .subscribe(onNext: { [weak self] res in
+                guard let this = self else { return }
                 if (res.newTodo?.result == nil){
-                    self?.showToast(msg: "새로운 Todo 추가에 실패하였습니다.")
+                    this.showToast(msg: "새로운 Todo 추가에 실패하였습니다.")
                 } else {
                     if res.newTodo?.result?.asResponseMessageField?.isSuccess ?? false {
                       
@@ -88,11 +89,11 @@ extension TodoEditVC : UITableViewDelegate,UITableViewDataSource {
                                 let todoVC = TodosVC()
                                 todoVC.getTodoListData()
                             }
-                                self?.navigationController?.popToRootViewController(animated: true)
+                                this.navigationController?.popToRootViewController(animated: true)
 
                         }))
                         
-                        self?.present(alert, animated: true, completion: nil)
+                        this.present(alert, animated: true, completion: nil)
                        
                     }
                 }

@@ -16,14 +16,11 @@ class TodosVC: UIViewController, IndicatorInfoProvider{
     var todoTitie_array : [String] = []
     var todoCategory_array : [String] = []
     var todoID_array : [String] = []
-    var milestonesName_array : [String] = []
-    var milestonesID_array : [String] = []
-    var milestonesIsChecked_array : [Bool] = []
     var current_row = ""
     
     
     override func viewWillAppear(_ animated: Bool) {
-        self.TodoTableView.reloadData()
+//        getTodoListData()
     }
     
     override func viewDidLoad() {
@@ -42,15 +39,16 @@ extension TodosVC : UITableViewDelegate, UITableViewDataSource {
     func getTodoListData () {
         _ = apollo.rx.fetch(query: TodoMainQuery(token: UserDefaults.standard.value(forKey: "accessToken") as? String, orderBy: "created_at"))
             .subscribe(onNext: { [weak self] res in
-                if(res.todo == nil) {self?.showToast(msg: "todo 정보 불러오기 실패")}
+                guard let this = self else { return }
+                if(res.todo == nil) {this.showToast(msg: "todo 정보 불러오기 실패")}
                 else {
                     for i in (res.todo?.indices)!{
-                        self?.todoTitie_array.append(res.todo?[i]?.asToDoField?.title ?? "nil")
-                        self?.todoCategory_array.append(res.todo?[i]?.asToDoField?.type ?? "nil")
-                        self?.todoID_array.append(res.todo?[i]?.asToDoField?.id ?? "nil" )
-                        self?.TodoTableView.height = CGFloat((110*(self?.todoTitie_array.count ?? 1)))
+                        this.todoTitie_array.insert(res.todo?[i]?.asToDoField?.title ?? "nil", at: i)
+                        this.todoCategory_array.insert(res.todo?[i]?.asToDoField?.type ?? "nil", at: i)
+                        this.todoID_array.insert(res.todo?[i]?.asToDoField?.id ?? "nil" , at: i)
+                        this.TodoTableView.height = CGFloat((110*(self?.todoTitie_array.count ?? 1)))
                     }
-                    self?.TodoTableView.reloadData()
+                    this.TodoTableView.reloadData()
                 }
             })
     }
@@ -81,7 +79,7 @@ extension TodosVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        current_row = todoTitie_array[indexPath.row]
+        current_row = todoTitie_array[indexPath.section]
         performSegue(withIdentifier: "toTodoDetail", sender: nil)
     }
     
